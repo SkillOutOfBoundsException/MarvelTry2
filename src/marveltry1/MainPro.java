@@ -12,6 +12,8 @@ import marveltry1.visual.MainFrame;
  * @author Diegu7
  */
 public class MainPro {
+    
+    public static MainFrame lol = new MainFrame();
 
     /**
      * @param args the command line arguments
