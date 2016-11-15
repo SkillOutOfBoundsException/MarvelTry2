@@ -19,6 +19,14 @@ public class LoginP extends javax.swing.JPanel {
     public LoginP() {
         initComponents();
     }
+    
+    public String takeUsuario(){
+        return fUsuario.getText();
+    }
+    
+    public String takePassword(){
+        return fPassword.getText();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,27 +37,59 @@ public class LoginP extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        fUsuario = new javax.swing.JTextField();
+        fPassword = new javax.swing.JPasswordField();
+        bCrearUsu = new javax.swing.JButton();
+        bLogin = new javax.swing.JButton();
 
-        setMinimumSize(new java.awt.Dimension(720, 480));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("username");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        fUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fUsuario.setText("username");
+        fUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fUsuarioMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                fUsuarioMouseReleased(evt);
+            }
+        });
+        fUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                fUsuarioActionPerformed(evt);
             }
         });
 
-        jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPasswordField1.setText("password");
-
-        jButton1.setText("jButton1");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        fPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fPassword.setText("password");
+        fPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jButton1MouseReleased(evt);
+                fPasswordMouseReleased(evt);
+            }
+        });
+
+        bCrearUsu.setText("Crear Usuario");
+        bCrearUsu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                bCrearUsuMouseReleased(evt);
+            }
+        });
+        bCrearUsu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCrearUsuActionPerformed(evt);
+            }
+        });
+
+        bLogin.setText("Login");
+        bLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                bLoginMouseReleased(evt);
+            }
+        });
+        bLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bLoginActionPerformed(evt);
             }
         });
 
@@ -58,38 +98,69 @@ public class LoginP extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(283, 283, 283)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(337, Short.MAX_VALUE))
+                .addContainerGap(510, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(fUsuario, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fPassword, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(bLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                        .addComponent(bCrearUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(510, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(179, 179, 179)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
-                .addComponent(jButton1)
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addGap(261, 261, 261)
+                .addComponent(fUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(fPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bCrearUsu)
+                    .addComponent(bLogin))
+                .addContainerGap(261, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void fUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_fUsuarioActionPerformed
 
-    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
-       MainPro.lol.setPanel(new MainMenuP());
-    }//GEN-LAST:event_jButton1MouseReleased
+    private void bCrearUsuMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCrearUsuMouseReleased
+        MainPro.funcs.crearUsu(takeUsuario(), takePassword());
+    }//GEN-LAST:event_bCrearUsuMouseReleased
+
+    private void bCrearUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearUsuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bCrearUsuActionPerformed
+
+    private void bLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bLoginActionPerformed
+
+    private void bLoginMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bLoginMouseReleased
+        if(MainPro.funcs.login(takeUsuario(), takePassword()))
+            MainPro.lol.setPanel(new MainMenuP());
+    }//GEN-LAST:event_bLoginMouseReleased
+
+    private void fUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fUsuarioMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fUsuarioMouseClicked
+
+    private void fUsuarioMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fUsuarioMouseReleased
+        fUsuario.setText("");
+    }//GEN-LAST:event_fUsuarioMouseReleased
+
+    private void fPasswordMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fPasswordMouseReleased
+        fPassword.setText("");
+    }//GEN-LAST:event_fPasswordMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton bCrearUsu;
+    private javax.swing.JButton bLogin;
+    private javax.swing.JPasswordField fPassword;
+    private javax.swing.JTextField fUsuario;
     // End of variables declaration//GEN-END:variables
 }

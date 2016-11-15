@@ -29,7 +29,7 @@ public class MainMenuP extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        setMinimumSize(new java.awt.Dimension(720, 480));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
 
         jLabel1.setText("lolll");
 
@@ -38,16 +38,16 @@ public class MainMenuP extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(317, 317, 317)
+                .addGap(584, 584, 584)
                 .addComponent(jLabel1)
-                .addContainerGap(384, Short.MAX_VALUE))
+                .addContainerGap(677, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(186, 186, 186)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(377, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(278, Short.MAX_VALUE))
+                .addGap(327, 327, 327))
         );
     }// </editor-fold>//GEN-END:initComponents
 
