@@ -39,8 +39,6 @@ public class LoginP extends javax.swing.JPanel {
 
         fUsuario = new javax.swing.JTextField();
         fPassword = new javax.swing.JPasswordField();
-        bCrearUsu = new javax.swing.JButton();
-        bLogin = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setPreferredSize(new java.awt.Dimension(1280, 720));
@@ -69,30 +67,6 @@ public class LoginP extends javax.swing.JPanel {
             }
         });
 
-        bCrearUsu.setText("Crear Usuario");
-        bCrearUsu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                bCrearUsuMouseReleased(evt);
-            }
-        });
-        bCrearUsu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bCrearUsuActionPerformed(evt);
-            }
-        });
-
-        bLogin.setText("Login");
-        bLogin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                bLoginMouseReleased(evt);
-            }
-        });
-        bLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bLoginActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -100,12 +74,8 @@ public class LoginP extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(510, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(fUsuario, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fPassword, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(bLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                        .addComponent(bCrearUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(fUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                    .addComponent(fPassword, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap(510, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -115,51 +85,28 @@ public class LoginP extends javax.swing.JPanel {
                 .addComponent(fUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
                 .addComponent(fPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bCrearUsu)
-                    .addComponent(bLogin))
-                .addContainerGap(261, Short.MAX_VALUE))
+                .addContainerGap(352, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void fUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fUsuarioActionPerformed
-
-    private void bCrearUsuMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCrearUsuMouseReleased
-        MainPro.funcs.crearUsu(takeUsuario(), takePassword());
-    }//GEN-LAST:event_bCrearUsuMouseReleased
-
-    private void bCrearUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearUsuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bCrearUsuActionPerformed
-
-    private void bLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bLoginActionPerformed
-
-    private void bLoginMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bLoginMouseReleased
-        if(MainPro.funcs.login(takeUsuario(), takePassword()))
-            MainPro.lol.setPanel(new MainMenuP());
-    }//GEN-LAST:event_bLoginMouseReleased
-
-    private void fUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fUsuarioMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fUsuarioMouseClicked
-
-    private void fUsuarioMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fUsuarioMouseReleased
-        fUsuario.setText("");
-    }//GEN-LAST:event_fUsuarioMouseReleased
 
     private void fPasswordMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fPasswordMouseReleased
         fPassword.setText("");
     }//GEN-LAST:event_fPasswordMouseReleased
 
+    private void fUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fUsuarioActionPerformed
+
+    private void fUsuarioMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fUsuarioMouseReleased
+        fUsuario.setText("");
+    }//GEN-LAST:event_fUsuarioMouseReleased
+
+    private void fUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fUsuarioMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fUsuarioMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bCrearUsu;
-    private javax.swing.JButton bLogin;
     private javax.swing.JPasswordField fPassword;
     private javax.swing.JTextField fUsuario;
     // End of variables declaration//GEN-END:variables

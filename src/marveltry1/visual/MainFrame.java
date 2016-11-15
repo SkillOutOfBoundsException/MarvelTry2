@@ -21,7 +21,7 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         initComponents();
         setLocationRelativeTo(null);
-        setPanel(new LoginP());
+        setPanel(new SplashP());
     }
     
     /**
@@ -49,7 +49,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
-        setPreferredSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         mainPanel.setMinimumSize(new java.awt.Dimension(1280, 720));

@@ -20,7 +20,7 @@ public class Logic {
     }
     
     public void crearUsu(String usu, String pass){
-        if(searchUsu(usu) == null)
+        if(searchUsu(usu) == null && usu.length() == 5)
             arrUsu.add(new Usuario(usu, pass));
     }
     
@@ -28,7 +28,7 @@ public class Logic {
         Usuario lol = searchUsu(usu);
         if(lol != null){
             if(lol.getPassword().equals(pass))
-                return true;            
+                return true;   
         }
         return false;
     }
