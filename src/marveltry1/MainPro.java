@@ -5,7 +5,7 @@
  */
 package marveltry1;
 
-import marveltry1.visual.MainFrame;
+import visual.MainFrame;
 import objects.Logic;
 
 /**

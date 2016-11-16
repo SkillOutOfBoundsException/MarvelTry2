@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package marveltry1.visual;
+package visual;
 
 import javax.swing.JPanel;
 import marveltry1.MainPro;
