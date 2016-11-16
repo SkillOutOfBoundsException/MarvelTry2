@@ -5,7 +5,6 @@
  */
 package visual;
 
-import javax.swing.JOptionPane;
 import marveltry1.MainPro;
 
 /**
@@ -135,11 +134,22 @@ public class LoginP extends javax.swing.JPanel {
     }//GEN-LAST:event_fUsuarioMouseClicked
 
     private void bAceptarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAceptarMouseReleased
+        String usu = takeUsuario();
+        String pass = takePassword();
         if(logOCre){
-            if(MainPro.funcs.login(takeUsuario(), takePassword()))
-                MainPro.lol.setPanel(new MainMenuP());  
-           MainPro.lol.showMessage("Aviso","Usuario o contrasena incorrecta", JOptionPane.ERROR_MESSAGE);
+            if(MainPro.funcs.login(usu, pass)){
+                MainPro.lol.setPanel(new MainMenuP());
+                return;
+            }
+           MainPro.lol.showMessage("Aviso","Usuario o contrasena incorrecta", 0);
+           return;
         }
+        if(MainPro.funcs.crearUsu(takeUsuario(), takePassword())){
+            MainPro.lol.showMessage("Aviso","Usuario creado exitosamente", 1);
+            MainPro.lol.setPanel(new SplashP());
+            return;
+        }
+        MainPro.lol.showMessage("Aviso","Usuario ya esta tomado o contrasena no es de 5 caracteres", 0);        
     }//GEN-LAST:event_bAceptarMouseReleased
 
     private void bCancelarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCancelarMouseReleased

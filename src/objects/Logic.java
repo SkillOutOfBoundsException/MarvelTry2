@@ -19,9 +19,12 @@ public class Logic {
         arrUsu = new ArrayList<>();
     }
     
-    public void crearUsu(String usu, String pass){
-        if(searchUsu(usu) == null && pass.length() == 5)
+    public boolean crearUsu(String usu, String pass){
+        if(searchUsu(usu) == null && pass.length() == 5){
             arrUsu.add(new Usuario(usu, pass));
+            return true;
+        }
+        return false;
     }
     
     public boolean login(String usu, String pass){

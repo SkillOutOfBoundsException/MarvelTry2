@@ -5,6 +5,7 @@
  */
 package visual;
 
+import javax.swing.Icon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import marveltry1.MainPro;
