@@ -75,6 +75,7 @@
       </Properties>
       <Events>
         <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="fPasswordMouseReleased"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fPasswordKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bAceptar">
