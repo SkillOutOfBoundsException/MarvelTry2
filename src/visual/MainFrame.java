@@ -5,6 +5,7 @@
  */
 package visual;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import marveltry1.MainPro;
 
@@ -33,6 +34,10 @@ public class MainFrame extends javax.swing.JFrame {
         mainPanel.add(x);
         mainPanel.repaint();
         mainPanel.revalidate();
+    }
+    
+    public void showMessage(String title, String message, int icon){
+        JOptionPane.showMessageDialog(MainPro.lol, message, title, icon);
     }
 
     /**

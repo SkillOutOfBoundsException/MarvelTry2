@@ -5,6 +5,7 @@
  */
 package visual;
 
+import javax.swing.JOptionPane;
 import marveltry1.MainPro;
 
 /**
@@ -13,11 +14,15 @@ import marveltry1.MainPro;
  */
 public class LoginP extends javax.swing.JPanel {
 
+    public boolean logOCre;
+    
     /**
      * Creates new form LoginP
+     * @param logCre
      */
-    public LoginP() {
+    public LoginP(boolean logCre) {
         initComponents();
+        logOCre = logCre;
     }
     
     public String takeUsuario(){
@@ -39,6 +44,8 @@ public class LoginP extends javax.swing.JPanel {
 
         fUsuario = new javax.swing.JTextField();
         fPassword = new javax.swing.JPasswordField();
+        bAceptar = new javax.swing.JButton();
+        bCancelar = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setPreferredSize(new java.awt.Dimension(1280, 720));
@@ -67,15 +74,33 @@ public class LoginP extends javax.swing.JPanel {
             }
         });
 
+        bAceptar.setText("Aceptar");
+        bAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                bAceptarMouseReleased(evt);
+            }
+        });
+
+        bCancelar.setText("Cancelar");
+        bCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                bCancelarMouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(510, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(fUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                    .addComponent(fPassword, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(fUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                    .addComponent(fPassword)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(bAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(510, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -85,7 +110,11 @@ public class LoginP extends javax.swing.JPanel {
                 .addComponent(fUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
                 .addComponent(fPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(352, Short.MAX_VALUE))
+                .addGap(55, 55, 55)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bAceptar)
+                    .addComponent(bCancelar))
+                .addContainerGap(290, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -105,8 +134,22 @@ public class LoginP extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_fUsuarioMouseClicked
 
+    private void bAceptarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAceptarMouseReleased
+        if(logOCre){
+            if(MainPro.funcs.login(takeUsuario(), takePassword()))
+                MainPro.lol.setPanel(new MainMenuP());  
+           MainPro.lol.showMessage("Aviso","Usuario o contrasena incorrecta", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_bAceptarMouseReleased
+
+    private void bCancelarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCancelarMouseReleased
+        MainPro.lol.setPanel(new SplashP());
+    }//GEN-LAST:event_bCancelarMouseReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bAceptar;
+    private javax.swing.JButton bCancelar;
     private javax.swing.JPasswordField fPassword;
     private javax.swing.JTextField fUsuario;
     // End of variables declaration//GEN-END:variables

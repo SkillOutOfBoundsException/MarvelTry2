@@ -27,8 +27,8 @@
                   <EmptySpace min="-2" pref="510" max="-2" attributes="0"/>
                   <Component id="bLogin" min="-2" pref="120" max="-2" attributes="0"/>
                   <EmptySpace pref="20" max="32767" attributes="0"/>
-                  <Component id="bCrearUsu" min="-2" pref="120" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="510" max="-2" attributes="0"/>
+                  <Component id="bCrearUsu" min="-2" pref="119" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="511" max="-2" attributes="0"/>
               </Group>
           </Group>
       </Group>
