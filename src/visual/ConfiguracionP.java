@@ -6,7 +6,6 @@
 package visual;
 
 import marveltry1.MainPro;
-import static marveltry1.MainPro.lol;
 import objects.Usuario;
 
 /**
@@ -19,13 +18,12 @@ public class ConfiguracionP extends javax.swing.JPanel {
      * Creates new form ConfiguracionP
      */
     private Usuario player1;
-    public boolean tutorial = MainPro.game.tutorial;
     
     public ConfiguracionP(Usuario player1) {
         initComponents();
         this.player1 = player1;
-        rTutorial.setSelected(tutorial);
-        rClasico.setSelected(!tutorial);
+        rTutorial.setSelected(MainPro.game.tutorial);
+        rClasico.setSelected(!MainPro.game.tutorial);
     }
 
     /**
