@@ -21,28 +21,71 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="584" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="677" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="540" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="bStrategoMarvel" pref="200" max="32767" attributes="0"/>
+                  <Component id="bConfiguracion" max="32767" attributes="0"/>
+                  <Component id="bMiPerfil" max="32767" attributes="0"/>
+                  <Component id="bUniverso" max="32767" attributes="0"/>
+                  <Component id="bCerrarSesion" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="540" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="377" max="32767" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="327" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
+              <Component id="bStrategoMarvel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+              <Component id="bConfiguracion" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+              <Component id="bMiPerfil" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+              <Component id="bUniverso" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+              <Component id="bCerrarSesion" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="198" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JButton" name="bStrategoMarvel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="lolll"/>
+        <Property name="text" type="java.lang.String" value="Stratego - MARVEL HEROES!"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bStrategoMarvelMouseReleased"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bConfiguracion">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Configuracion"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bConfiguracionMouseReleased"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bMiPerfil">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mi Perfil"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="bUniverso">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Universo Marvel"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="bCerrarSesion">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cerrar Sesion"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bCerrarSesionMouseReleased"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

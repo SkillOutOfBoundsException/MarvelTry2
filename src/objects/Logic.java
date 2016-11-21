@@ -9,6 +9,9 @@ public class Logic {
     
     public Logic(){
         arrUsu = new ArrayList<>();
+        arrUsu.add(new Usuario("username", "password"));
+        arrUsu.add(new Usuario("dego", "12345"));
+        arrUsu.add(new Usuario("ivan", "12354"));
     }
     
     public boolean crearUsu(String usu, String pass){
@@ -22,8 +25,11 @@ public class Logic {
     public boolean login(String usu, String pass){
         Usuario lol = searchUsu(usu);
         if(lol != null){
-            if(lol.getPassword().equals(pass))
+            if(lol.getPassword().equals(pass)){
+                arrUsu.remove(lol);
+                arrUsu.add(lol);
                 return true;
+            }    
         }
         return false;
     }

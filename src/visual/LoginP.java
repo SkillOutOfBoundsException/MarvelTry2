@@ -127,7 +127,7 @@ public class LoginP extends javax.swing.JPanel {
         String pass = takePassword();
         if(logOCre){
             if(MainPro.funcs.login(usu, pass)){
-                MainPro.lol.setPanel(new MainMenuP());
+                MainPro.lol.setPanel(new MainMenuP(MainPro.funcs.searchUsu(usu)));
                 return;
             }
            MainPro.lol.showMessage("Aviso","Usuario o contrasena incorrecta", 0);
@@ -151,7 +151,7 @@ public class LoginP extends javax.swing.JPanel {
             String pass = takePassword();
             if(logOCre){
                 if(MainPro.funcs.login(usu, pass)){
-                    MainPro.lol.setPanel(new MainMenuP());
+                    MainPro.lol.setPanel(new MainMenuP(MainPro.funcs.searchUsu(usu)));
                     return;
                 }
             MainPro.lol.showMessage("Aviso","Usuario o contrasena incorrecta", 0);
