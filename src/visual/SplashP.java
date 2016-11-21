@@ -4,7 +4,7 @@ package visual;
 import marveltry1.MainPro;
 
 public class SplashP extends javax.swing.JPanel {
-
+    
     public SplashP() {
         initComponents();
     }

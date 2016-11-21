@@ -19,7 +19,6 @@ public class GameP extends javax.swing.JPanel {
      */
     public Usuario player1;
     public Usuario player2;
-    public JButton[][] grid;
     
     public GameP(Usuario player1, Usuario player2) {
         initComponents();

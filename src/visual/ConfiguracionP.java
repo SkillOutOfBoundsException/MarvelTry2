@@ -6,6 +6,7 @@
 package visual;
 
 import marveltry1.MainPro;
+import static marveltry1.MainPro.lol;
 import objects.Usuario;
 
 /**
@@ -18,10 +19,13 @@ public class ConfiguracionP extends javax.swing.JPanel {
      * Creates new form ConfiguracionP
      */
     private Usuario player1;
+    public boolean tutorial = MainPro.game.tutorial;
     
     public ConfiguracionP(Usuario player1) {
         initComponents();
         this.player1 = player1;
+        rTutorial.setSelected(tutorial);
+        rClasico.setSelected(!tutorial);
     }
 
     /**
@@ -35,8 +39,8 @@ public class ConfiguracionP extends javax.swing.JPanel {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         bRegresar = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rTutorial = new javax.swing.JRadioButton();
+        rClasico = new javax.swing.JRadioButton();
 
         setMinimumSize(new java.awt.Dimension(1280, 720));
 
@@ -47,11 +51,11 @@ public class ConfiguracionP extends javax.swing.JPanel {
             }
         });
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Tutorial");
+        buttonGroup1.add(rTutorial);
+        rTutorial.setText("Tutorial");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Clasico");
+        buttonGroup1.add(rClasico);
+        rClasico.setText("Clasico");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -61,17 +65,17 @@ public class ConfiguracionP extends javax.swing.JPanel {
                 .addGap(540, 540, 540)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(bRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(rTutorial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rClasico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(540, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(255, Short.MAX_VALUE)
-                .addComponent(jRadioButton1)
+                .addComponent(rTutorial)
                 .addGap(37, 37, 37)
-                .addComponent(jRadioButton2)
+                .addComponent(rClasico)
                 .addGap(34, 34, 34)
                 .addComponent(bRegresar)
                 .addGap(325, 325, 325))
@@ -79,6 +83,7 @@ public class ConfiguracionP extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bRegresarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bRegresarMouseReleased
+        MainPro.game.tutorial = rTutorial.isSelected();
         MainPro.lol.setPanel(new MainMenuP(player1));
     }//GEN-LAST:event_bRegresarMouseReleased
 
@@ -86,7 +91,7 @@ public class ConfiguracionP extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bRegresar;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton rClasico;
+    private javax.swing.JRadioButton rTutorial;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,9 +6,7 @@
 package visual;
 
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
+import marveltry1.MainPro;
 
 /**
  *
@@ -19,27 +17,27 @@ public class ButtonsP extends javax.swing.JPanel {
     /**
      * Creates new form ButtonsP
      */
-    public JButton[][] grid;
     
     public ButtonsP() {
+        final int f = 0;
         initComponents();
         this.setLayout(new GridLayout(10,10));
-        grid=new JButton[10][10]; //allocate the size of grid
         for(int y=0; y<10; y++){
             for(int x=0; x<10; x++){
-                    grid[x][y]=new JButton((char)(65+x)+""+y); //creates new button
-                    grid[x][y].addMouseListener(new java.awt.event.MouseAdapter() {
+                    MainPro.game.grid[x][y]=new BetterButtons((char)(65+x)+""+y,x,y);
+                    MainPro.game.grid[x][y].addMouseListener(new java.awt.event.MouseAdapter() {
                             @Override
                             public void mouseReleased(java.awt.event.MouseEvent evt) {
+                                buttonPressed((BetterButtons)evt.getSource());
                             }
                         });
-                    this.add(grid[x][y]); //adds button to grid
+                    this.add(MainPro.game.grid[x][y]);
             }
         }
     }
     
-    public void buttonPressed(java.awt.event.MouseEvent evt, int x, int y){
-        System.out.println(x + " - " + y);
+    public void buttonPressed(BetterButtons x){
+        System.out.println(x.x + "-" + x.y);
     }
     
     /**
