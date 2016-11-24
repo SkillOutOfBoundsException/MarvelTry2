@@ -6,6 +6,7 @@
 package visual;
 
 import java.awt.GridLayout;
+import javax.swing.JButton;
 import marveltry1.MainPro;
 
 /**
@@ -17,25 +18,29 @@ public class ButtonsP extends javax.swing.JPanel {
     /**
      * Creates new form ButtonsP
      */
+    public static JButton[][] grid;
     
     public ButtonsP() {
-        final int f = 0;
         initComponents();
+        grid = new BetterButtons[10][10];
         this.setLayout(new GridLayout(10,10));
         for(int y=0; y<10; y++){
             for(int x=0; x<10; x++){
-                    MainPro.game.grid[x][y]=new BetterButtons((char)(65+x)+""+y,x,y);
-                    MainPro.game.grid[x][y].addMouseListener(new java.awt.event.MouseAdapter() {
+                    grid[x][y]= new BetterButtons((char)(65+x)+"-"+y, x, y);
+                    grid[x][y].addMouseListener(new java.awt.event.MouseAdapter() {
                             @Override
                             public void mouseReleased(java.awt.event.MouseEvent evt) {
                                 buttonPressed((BetterButtons)evt.getSource());
                             }
                         });
-                    this.add(MainPro.game.grid[x][y]);
+                    this.add(grid[x][y]);
             }
         }
+        MainPro.game.randPlacement(true);
+        MainPro.game.randPlacement(false);
+        MainPro.game.setPieces();
     }
-    
+ 
     public void buttonPressed(BetterButtons x){
         System.out.println(x.x + "-" + x.y);
     }

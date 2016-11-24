@@ -9,12 +9,9 @@ package objects;
  *
  * @author Diegu7
  */
-public abstract class Ficha {
-    public boolean hero;
-    public int power;
-    
-    public Ficha(boolean afiliacion){
-        hero = afiliacion;
+public class One extends Ficha{
+    public One(boolean afiliacion){
+        super(afiliacion);
+        power = 1;
     }
-    
 }
