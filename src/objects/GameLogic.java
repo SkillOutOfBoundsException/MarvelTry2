@@ -6,7 +6,6 @@
 package objects;
 
 import java.util.Random;
-import visual.BetterButtons;
 import visual.ButtonsP;
 
 /**
@@ -15,6 +14,7 @@ import visual.ButtonsP;
  */
 public class GameLogic {
     public boolean tutorial = true;
+    public boolean heroStart = true;
     public Ficha[][] fichas = new Ficha[10][10];
     public Random ran = new Random();
     

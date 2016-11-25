@@ -31,6 +31,8 @@ public class PlayerComboP extends javax.swing.JPanel {
         }
         for(String x : arrPlayers)
             cPlayers.addItem(x);
+        rHeroStart.setSelected(MainPro.game.heroStart);
+        rVillainStart.setSelected(!MainPro.game.heroStart);
     }
 
     /**
@@ -42,9 +44,13 @@ public class PlayerComboP extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         bRegresar = new javax.swing.JButton();
         cPlayers = new javax.swing.JComboBox<>();
         bAceptar = new javax.swing.JButton();
+        rHeroStart = new javax.swing.JRadioButton();
+        rVillainStart = new javax.swing.JRadioButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1280, 720));
 
@@ -64,6 +70,15 @@ public class PlayerComboP extends javax.swing.JPanel {
             }
         });
 
+        buttonGroup1.add(rHeroStart);
+        rHeroStart.setText("Heroes");
+
+        buttonGroup1.add(rVillainStart);
+        rVillainStart.setText("Villanos");
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Que equipo elije?");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -73,19 +88,28 @@ public class PlayerComboP extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(bRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(cPlayers, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(bAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rVillainStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rHeroStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(540, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(277, 277, 277)
+                .addGap(205, 205, 205)
                 .addComponent(cPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addGap(27, 27, 27)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(rHeroStart)
+                .addGap(7, 7, 7)
+                .addComponent(rVillainStart)
+                .addGap(19, 19, 19)
                 .addComponent(bAceptar)
-                .addGap(50, 50, 50)
+                .addGap(27, 27, 27)
                 .addComponent(bRegresar)
-                .addContainerGap(277, Short.MAX_VALUE))
+                .addContainerGap(291, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -94,6 +118,7 @@ public class PlayerComboP extends javax.swing.JPanel {
     }//GEN-LAST:event_bRegresarMouseReleased
 
     private void bAceptarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAceptarMouseReleased
+        ButtonsP.heroesTurn = rHeroStart.isSelected();
         Usuario usu = MainPro.funcs.searchUsu((String)cPlayers.getSelectedItem());
         if(usu != null){
             MainPro.lol.setPanel(new GameP(player1, usu));
@@ -107,6 +132,10 @@ public class PlayerComboP extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAceptar;
     private javax.swing.JButton bRegresar;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cPlayers;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JRadioButton rHeroStart;
+    private javax.swing.JRadioButton rVillainStart;
     // End of variables declaration//GEN-END:variables
 }

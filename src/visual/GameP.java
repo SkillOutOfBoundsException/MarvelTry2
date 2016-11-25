@@ -5,6 +5,7 @@
  */
 package visual;
 
+import marveltry1.MainPro;
 import objects.Usuario;
 
 /**
@@ -35,11 +36,19 @@ public class GameP extends javax.swing.JPanel {
     private void initComponents() {
 
         buttonsP1 = new visual.ButtonsP();
+        bRendir = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setPreferredSize(new java.awt.Dimension(1280, 720));
 
         buttonsP1.setPreferredSize(new java.awt.Dimension(700, 700));
+
+        bRendir.setText("RENDIRSE");
+        bRendir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                bRendirMouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -48,19 +57,30 @@ public class GameP extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(290, Short.MAX_VALUE)
                 .addComponent(buttonsP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(290, 290, 290))
+                .addGap(89, 89, 89)
+                .addComponent(bRendir, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(buttonsP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bRendir)
+                .addGap(313, 313, 313))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bRendirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bRendirMouseReleased
+        MainPro.lol.setPanel(new MainMenuP(player1));
+    }//GEN-LAST:event_bRendirMouseReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bRendir;
     private visual.ButtonsP buttonsP1;
     // End of variables declaration//GEN-END:variables
 }
