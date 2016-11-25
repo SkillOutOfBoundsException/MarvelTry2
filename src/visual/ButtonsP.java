@@ -8,6 +8,7 @@ package visual;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import marveltry1.MainPro;
+import objects.Ficha;
 
 /**
  *
@@ -18,7 +19,9 @@ public class ButtonsP extends javax.swing.JPanel {
     /**
      * Creates new form ButtonsP
      */
-    public static JButton[][] grid;
+    public static BetterButtons[][] grid;
+    public static boolean selected = false;
+    public BetterButtons temp;
     
     public ButtonsP() {
         initComponents();
@@ -41,9 +44,25 @@ public class ButtonsP extends javax.swing.JPanel {
         MainPro.game.setPieces();
     }
  
-    public void buttonPressed(BetterButtons x){
-        System.out.println(x.x + "-" + x.y);
+    public void buttonPressed(BetterButtons i){
+        System.out.println(i.x + "-" + i.y);
+        if(i.ficha != null){
+            if(selected){
+                if(i.available){
+                    i.ficha = temp.ficha;
+                    temp.ficha = null;
+                    i.available = false;
+                    i.setText((i.ficha.hero ? "H:" : "V:") + i.ficha.power);
+                    //temp.setText(((char)(65+temp.x)) + "" +  x.y);
+                }
+            }
+            else{
+                temp = i.ficha.selected(i);
+            }
+        }
     }
+    
+    //public void 
     
     /**
      * This method is called from within the constructor to initialize the form.

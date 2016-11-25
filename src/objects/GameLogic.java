@@ -142,7 +142,7 @@ public class GameLogic {
         for(int y = 0; y<10; y++){
             for(int x = 0; x<10; x++){
                 if(fichas[x][y] != null){
-                    ((BetterButtons)ButtonsP.grid[x][y]).ficha = fichas[x][y];
+                    ButtonsP.grid[x][y].ficha = fichas[x][y];
                     //System.out.print(((BetterButtons)ButtonsP.grid[y][x]).ficha.power + " - ");
                     //System.out.println(fichas[y][x] + " - ");
                     ButtonsP.grid[x][y].setText((fichas[x][y].hero ? "H:" : "V:") + fichas[x][y].power);
