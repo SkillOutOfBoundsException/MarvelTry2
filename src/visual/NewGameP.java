@@ -48,8 +48,18 @@ public class NewGameP extends javax.swing.JPanel {
         });
 
         bCargarPartida.setText("Cargar Partida");
+        bCargarPartida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                bCargarPartidaMouseReleased(evt);
+            }
+        });
 
         bEliminarPartida.setText("Eliminar Partida");
+        bEliminarPartida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                bEliminarPartidaMouseReleased(evt);
+            }
+        });
 
         bRegresar.setText("Regresar");
         bRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -93,6 +103,14 @@ public class NewGameP extends javax.swing.JPanel {
     private void bPartidaNuevaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bPartidaNuevaMouseReleased
         MainPro.lol.setPanel(new PlayerComboP(player1));
     }//GEN-LAST:event_bPartidaNuevaMouseReleased
+
+    private void bCargarPartidaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCargarPartidaMouseReleased
+        MainPro.lol.showMessage("Aviso","PROXIMAMENTE", 1);
+    }//GEN-LAST:event_bCargarPartidaMouseReleased
+
+    private void bEliminarPartidaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bEliminarPartidaMouseReleased
+        MainPro.lol.showMessage("Aviso","PROXIMAMENTE", 1);
+    }//GEN-LAST:event_bEliminarPartidaMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

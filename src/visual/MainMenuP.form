@@ -78,6 +78,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Universo Marvel"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bUniversoMouseReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bCerrarSesion">
       <Properties>

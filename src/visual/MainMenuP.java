@@ -42,6 +42,11 @@ public class MainMenuP extends javax.swing.JPanel {
         bMiPerfil.setText("Mi Perfil");
 
         bUniverso.setText("Universo Marvel");
+        bUniverso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                bUniversoMouseReleased(evt);
+            }
+        });
 
         bCerrarSesion.setText("Cerrar Sesion");
         bCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -92,6 +97,10 @@ public class MainMenuP extends javax.swing.JPanel {
     private void bConfiguracionMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bConfiguracionMouseReleased
         MainPro.lol.setPanel(new ConfiguracionP(player1));
     }//GEN-LAST:event_bConfiguracionMouseReleased
+
+    private void bUniversoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bUniversoMouseReleased
+        MainPro.lol.showMessage("Aviso","PROXIMAMENTE", 1);
+    }//GEN-LAST:event_bUniversoMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

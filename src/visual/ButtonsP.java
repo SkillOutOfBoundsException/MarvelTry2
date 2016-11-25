@@ -63,21 +63,24 @@ public class ButtonsP extends javax.swing.JPanel {
     public void buttonPressed(BetterButtons i){
         System.out.println(i.x + "-" + i.y);
         if(selected){
-                if(i.available){
-                    i.ficha = temp.ficha;
-                    temp.ficha = null;
-                    setAvailableFalse();
-                    i.setText((i.ficha.hero ? "H:" : "V:") + i.ficha.power);
-                    temp.setText(((char)(65+temp.x)) +"-"+ temp.y );
-                    selected = false;
-                    heroesTurn = !heroesTurn;
-                }
+            System.out.println("SELECTED");
+            if(i.available){
+                i.ficha = temp.ficha;
+                temp.ficha = null;
+                setAvailableFalse();
+                i.setText((i.ficha.hero ? "H:" : "V:") + i.ficha.power);
+                temp.setText(((char)(65+temp.x)) +"-"+ temp.y );
+                selected = false;
+                heroesTurn = !heroesTurn;
+                System.out.println("TURN PASSED");
+            }
         }
         else if(i.ficha != null){
             if(i.ficha.hero != heroesTurn)
                 return;
             if(i.ficha.selected(i))
-                    temp = i;
+                temp = i;
+            System.out.println("RIP");
         }
     }
     

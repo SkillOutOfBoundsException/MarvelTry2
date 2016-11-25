@@ -62,11 +62,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Cargar Partida"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bCargarPartidaMouseReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bEliminarPartida">
       <Properties>
         <Property name="text" type="java.lang.String" value="Eliminar Partida"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bEliminarPartidaMouseReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bRegresar">
       <Properties>

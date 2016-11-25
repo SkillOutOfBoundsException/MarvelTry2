@@ -21,36 +21,44 @@ public abstract class Ficha {
     }
     
     public Boolean selected(BetterButtons x){
-        ButtonsP.selected = true;
+        boolean flac = false;
         if(hero){
             if(x.y < 9 && (ButtonsP.grid[x.x][x.y-1].ficha == null|| ButtonsP.grid[x.x][x.y-1].ficha.hero == !hero)){//up
                 ButtonsP.grid[x.x][x.y-1].setText("GLOW");
                 ButtonsP.grid[x.x][x.y-1].available = true;
+                flac = true;
             }
             if(x.x < 9 && (ButtonsP.grid[x.x+1][x.y].ficha == null || ButtonsP.grid[x.x+1][x.y].ficha.hero == !hero)){//right
                 ButtonsP.grid[x.x+1][x.y].setText("GLOW");
                 ButtonsP.grid[x.x+1][x.y].available = true;
+                flac = true;
             }
             if(x.x > 0 && (ButtonsP.grid[x.x-1][x.y].ficha == null || ButtonsP.grid[x.x-1][x.y].ficha.hero == !hero)){//left
                 ButtonsP.grid[x.x-1][x.y].setText("GLOW");
                 ButtonsP.grid[x.x-1][x.y].available = true;
+                flac = true;
             }
-            return true;
+            ButtonsP.selected = flac;
+            return flac;
         }
         else{
             if(x.y < 9 && (ButtonsP.grid[x.x][x.y+1].ficha == null || ButtonsP.grid[x.x][x.y+1].ficha.hero == !hero)){
                 ButtonsP.grid[x.x][x.y+1].setText("GLOW");
                 ButtonsP.grid[x.x][x.y+1].available = true;
+                flac = true;
             }
             if(x.x < 9 && (ButtonsP.grid[x.x+1][x.y].ficha == null || ButtonsP.grid[x.x+1][x.y].ficha.hero == !hero)){
                 ButtonsP.grid[x.x+1][x.y].setText("GLOW");
                 ButtonsP.grid[x.x+1][x.y].available = true;
+                flac = true;
             }
             if(x.x > 0 && (ButtonsP.grid[x.x-1][x.y].ficha == null || ButtonsP.grid[x.x-1][x.y].ficha.hero == !hero)){
                 ButtonsP.grid[x.x-1][x.y].setText("GLOW");
                 ButtonsP.grid[x.x-1][x.y].available = true;
+                flac = true;
             }
-            return true;
+            ButtonsP.selected = flac;
+            return flac;
         }
     }
     
