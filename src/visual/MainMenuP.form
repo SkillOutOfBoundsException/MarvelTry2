@@ -29,6 +29,7 @@
                   <Component id="bMiPerfil" max="32767" attributes="0"/>
                   <Component id="bUniverso" max="32767" attributes="0"/>
                   <Component id="bCerrarSesion" alignment="0" max="32767" attributes="0"/>
+                  <Component id="lLoggedIn" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="540" max="-2" attributes="0"/>
           </Group>
@@ -37,7 +38,9 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
+              <Component id="lLoggedIn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
               <Component id="bStrategoMarvel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               <Component id="bConfiguracion" min="-2" max="-2" attributes="0"/>
@@ -73,6 +76,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Mi Perfil"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bMiPerfilMouseReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bUniverso">
       <Properties>
@@ -89,6 +95,12 @@
       <Events>
         <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bCerrarSesionMouseReleased"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lLoggedIn">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="user"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

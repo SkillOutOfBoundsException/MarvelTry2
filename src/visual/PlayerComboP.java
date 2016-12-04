@@ -31,8 +31,8 @@ public class PlayerComboP extends javax.swing.JPanel {
         }
         for(String x : arrPlayers)
             cPlayers.addItem(x);
-        rHeroStart.setSelected(MainPro.game.heroStart);
-        rVillainStart.setSelected(!MainPro.game.heroStart);
+        rHeroStart.setSelected(MainPro.gameLogic.heroStart);
+        rVillainStart.setSelected(!MainPro.gameLogic.heroStart);
     }
 
     /**
@@ -121,7 +121,7 @@ public class PlayerComboP extends javax.swing.JPanel {
         ButtonsP.heroesTurn = rHeroStart.isSelected();
         Usuario usu = MainPro.funcs.searchUsu((String)cPlayers.getSelectedItem());
         if(usu != null){
-            MainPro.lol.setPanel(new GameP(player1, usu));
+            MainPro.lol.setPanel(MainPro.game  = new GameP(player1, usu));
             return;
         }
         MainPro.lol.showMessage("Aviso","Por favor seleccione el player 2", 0);

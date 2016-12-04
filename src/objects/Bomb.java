@@ -5,6 +5,8 @@
  */
 package objects;
 
+import visual.BetterButtons;
+
 /**
  *
  * @author Diegu7
@@ -15,4 +17,8 @@ public class Bomb extends Ficha{
         power = 11;
     }
     
+    @Override
+    public boolean selected(BetterButtons x){
+        return false;
+    }
 }

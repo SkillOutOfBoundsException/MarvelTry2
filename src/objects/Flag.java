@@ -5,6 +5,8 @@
  */
 package objects;
 
+import visual.BetterButtons;
+
 /**
  *
  * @author Diegu7
@@ -14,5 +16,11 @@ public class Flag extends Ficha{
         super(afiliacion);
         power = 0;
     }
+    
+    @Override
+    public boolean selected(BetterButtons x){
+        return false;
+    }
+        
     
 }

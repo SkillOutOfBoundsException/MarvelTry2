@@ -44,7 +44,7 @@ public class ButtonsP extends javax.swing.JPanel {
         this.setLayout(new GridLayout(10,10));
         for(int y=0; y<10; y++){
             for(int x=0; x<10; x++){
-                    grid[x][y]= new BetterButtons((char)(65+x)+"-"+y, x, y);
+                    grid[x][y]= new BetterButtons("[" + (x) + "," + y + "]", x, y);
                     grid[x][y].addMouseListener(new java.awt.event.MouseAdapter() {
                             @Override
                             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -57,6 +57,7 @@ public class ButtonsP extends javax.swing.JPanel {
         randPlacement(true);
         randPlacement(false);
         setPieces();
+        //GameP.setLabel(GameP.player1.getNombre());
         
     }
  
@@ -69,10 +70,16 @@ public class ButtonsP extends javax.swing.JPanel {
                 temp.ficha = null;
                 setAvailableFalse();
                 i.setText((i.ficha.hero ? "H:" : "V:") + i.ficha.power);
-                temp.setText(((char)(65+temp.x)) +"-"+ temp.y );
+                temp.setText("[" + temp.x + "," + temp.y + "]");
                 selected = false;
                 heroesTurn = !heroesTurn;
+                //GameP.setLabel(heroesTurn == MainPro.gameLogic.heroStart ? GameP.player1.getNombre() : GameP.player2.getNombre());
                 System.out.println("TURN PASSED");
+            }
+            else{
+                setAvailableFalse();
+                selected = false;
+                System.out.println("TURN CANCELED");
             }
         }
         else if(i.ficha != null){
@@ -89,7 +96,7 @@ public class ButtonsP extends javax.swing.JPanel {
             for(int x = 0; x<10; x++){
                 grid[x][y].available = false;
                 if(grid[x][y].getText().equalsIgnoreCase("glow")){
-                    grid[x][y].setText(((char)(65+x)) +"-"+ y );
+                    grid[x][y].setText("[" + x +","+ y + "]");
                     if(grid[x][y].ficha != null)
                         grid[x][y].setText((grid[x][y].ficha.hero ? "H:" : "V:") + grid[x][y].ficha.power);
                 }

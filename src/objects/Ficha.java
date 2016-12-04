@@ -20,7 +20,7 @@ public abstract class Ficha {
         hero = afiliacion;
     }
     
-    public Boolean selected(BetterButtons x){
+    public boolean selected(BetterButtons x){
         boolean flac = false;
         if(hero){
             if(x.y < 9 && (ButtonsP.grid[x.x][x.y-1].ficha == null|| ButtonsP.grid[x.x][x.y-1].ficha.hero == !hero)){//up

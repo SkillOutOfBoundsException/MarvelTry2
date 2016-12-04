@@ -11,6 +11,7 @@ public class MainMenuP extends javax.swing.JPanel {
     public MainMenuP(Usuario player1) {
         initComponents();
         this.player1 = player1;
+        //lLoggedIn.setText(player1.getNombre());
     }
 
     @SuppressWarnings("unchecked")
@@ -22,6 +23,7 @@ public class MainMenuP extends javax.swing.JPanel {
         bMiPerfil = new javax.swing.JButton();
         bUniverso = new javax.swing.JButton();
         bCerrarSesion = new javax.swing.JButton();
+        lLoggedIn = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1280, 720));
 
@@ -40,6 +42,11 @@ public class MainMenuP extends javax.swing.JPanel {
         });
 
         bMiPerfil.setText("Mi Perfil");
+        bMiPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                bMiPerfilMouseReleased(evt);
+            }
+        });
 
         bUniverso.setText("Universo Marvel");
         bUniverso.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -55,6 +62,9 @@ public class MainMenuP extends javax.swing.JPanel {
             }
         });
 
+        lLoggedIn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lLoggedIn.setText("user");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -66,13 +76,16 @@ public class MainMenuP extends javax.swing.JPanel {
                     .addComponent(bConfiguracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bMiPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bUniverso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(bCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lLoggedIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(540, 540, 540))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(227, 227, 227)
+                .addGap(162, 162, 162)
+                .addComponent(lLoggedIn)
+                .addGap(49, 49, 49)
                 .addComponent(bStrategoMarvel)
                 .addGap(45, 45, 45)
                 .addComponent(bConfiguracion)
@@ -102,6 +115,10 @@ public class MainMenuP extends javax.swing.JPanel {
         MainPro.lol.showMessage("Aviso","PROXIMAMENTE", 1);
     }//GEN-LAST:event_bUniversoMouseReleased
 
+    private void bMiPerfilMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMiPerfilMouseReleased
+        MainPro.lol.showMessage("Aviso","PROXIMAMENTE", 1);
+    }//GEN-LAST:event_bMiPerfilMouseReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCerrarSesion;
@@ -109,5 +126,6 @@ public class MainMenuP extends javax.swing.JPanel {
     private javax.swing.JButton bMiPerfil;
     private javax.swing.JButton bStrategoMarvel;
     private javax.swing.JButton bUniverso;
+    private javax.swing.JLabel lLoggedIn;
     // End of variables declaration//GEN-END:variables
 }

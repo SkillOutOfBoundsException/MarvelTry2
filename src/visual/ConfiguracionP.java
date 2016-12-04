@@ -22,8 +22,8 @@ public class ConfiguracionP extends javax.swing.JPanel {
     public ConfiguracionP(Usuario player1) {
         initComponents();
         this.player1 = player1;
-        rTutorial.setSelected(MainPro.game.tutorial);
-        rClasico.setSelected(!MainPro.game.tutorial);
+        rTutorial.setSelected(MainPro.gameLogic.tutorial);
+        rClasico.setSelected(!MainPro.gameLogic.tutorial);
     }
 
     /**
@@ -81,7 +81,7 @@ public class ConfiguracionP extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bRegresarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bRegresarMouseReleased
-        MainPro.game.tutorial = rTutorial.isSelected();
+        MainPro.gameLogic.tutorial = rTutorial.isSelected();
         MainPro.lol.setPanel(new MainMenuP(player1));
     }//GEN-LAST:event_bRegresarMouseReleased
 
