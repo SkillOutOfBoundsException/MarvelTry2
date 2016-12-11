@@ -7,7 +7,6 @@ package visual;
 
 import java.awt.GridLayout;
 import java.util.Random;
-import marveltry1.MainPro;
 import objects.Bomb;
 import objects.Eight;
 import objects.Ficha;
