@@ -9,11 +9,8 @@ package objects;
  *
  * @author Diegu7
  */
-public class Nine extends Ficha{
-    
-    public Nine(boolean afiliacion, String dir) {
+public class NullF extends Ficha{
+    public NullF(boolean afiliacion, String dir) {
         super(afiliacion, dir);
-        power = 9;
     }
-    
 }

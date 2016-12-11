@@ -10,8 +10,8 @@ package objects;
  * @author Diegu7
  */
 public class Three extends Ficha{
-    public Three(boolean afiliacion) {
-        super(afiliacion);
+    public Three(boolean afiliacion, String dir) {
+        super(afiliacion, dir);
         power  = 3;
     }
     

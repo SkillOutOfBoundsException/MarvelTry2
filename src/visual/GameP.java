@@ -5,6 +5,7 @@
  */
 package visual;
 
+import javax.swing.table.DefaultTableModel;
 import marveltry1.MainPro;
 import objects.Usuario;
 
@@ -39,6 +40,10 @@ public class GameP extends javax.swing.JPanel {
         buttonsP1 = new visual.ButtonsP();
         bRendir = new javax.swing.JButton();
         lTurnoDe = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tVillainDed = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tHeroDed = new javax.swing.JTable();
 
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setPreferredSize(new java.awt.Dimension(1280, 720));
@@ -54,12 +59,72 @@ public class GameP extends javax.swing.JPanel {
 
         lTurnoDe.setText("Turno de: ");
 
+        tVillainDed.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Defeated Villains"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tVillainDed);
+        if (tVillainDed.getColumnModel().getColumnCount() > 0) {
+            tVillainDed.getColumnModel().getColumn(0).setResizable(false);
+        }
+
+        tHeroDed.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Fallen Heroes"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tHeroDed);
+        if (tHeroDed.getColumnModel().getColumnCount() > 0) {
+            tHeroDed.getColumnModel().getColumn(0).setResizable(false);
+        }
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(290, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addComponent(buttonsP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(89, 89, 89)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -69,21 +134,38 @@ public class GameP extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(buttonsP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(164, 164, 164)
                 .addComponent(lTurnoDe)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bRendir)
                 .addGap(313, 313, 313))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(buttonsP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 6, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     public static void setLabel(String s){
         lTurnoDe.setText(s);
+    }
+    
+    public void setVillainRow(String lol){
+        DefaultTableModel model = (DefaultTableModel) tHeroDed.getModel();
+        model.addRow(new Object[]{lol});
+    }
+    
+    public void setHeroRow(String lol){
+        DefaultTableModel model = (DefaultTableModel) tHeroDed.getModel();
+        model.addRow(new Object[]{lol});
     }
     
     private void bRendirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bRendirMouseReleased
@@ -94,6 +176,10 @@ public class GameP extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bRendir;
     private visual.ButtonsP buttonsP1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private static javax.swing.JLabel lTurnoDe;
+    private javax.swing.JTable tHeroDed;
+    private javax.swing.JTable tVillainDed;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,6 +7,7 @@ package visual;
 
 import java.awt.GridLayout;
 import java.util.Random;
+import javax.swing.ImageIcon;
 import objects.Bomb;
 import objects.Eight;
 import objects.Ficha;
@@ -14,6 +15,7 @@ import objects.Five;
 import objects.Flag;
 import objects.Four;
 import objects.Nine;
+import objects.NullF;
 import objects.One;
 import objects.Seven;
 import objects.Six;
@@ -36,6 +38,11 @@ public class ButtonsP extends javax.swing.JPanel {
     public static BetterButtons temp;
     public static boolean heroesTurn = true;
     public Random ran = new Random();
+    public Ficha[] nullFs = new Ficha[8];
+    public Ficha[] dedVillains = new Ficha[20];
+    public Ficha[] dedHeroes = new Ficha[20];
+    public int dedV = 0;
+    public int dedH = 0;
     
     public ButtonsP() {
         initComponents();
@@ -55,6 +62,7 @@ public class ButtonsP extends javax.swing.JPanel {
         }
         randPlacement(true);
         randPlacement(false);
+        setNullPieces();
         setPieces();
         //GameP.setLabel(GameP.player1.getNombre());
         
@@ -65,13 +73,14 @@ public class ButtonsP extends javax.swing.JPanel {
         if(selected){
             System.out.println("SELECTED");
             if(i.available){
-                i.ficha = temp.ficha;
-                temp.ficha = null;
+                fight(temp, i);
                 setAvailableFalse();
-                i.setText((i.ficha.hero ? "H:" : "V:") + i.ficha.power);
+                //i.setText((i.ficha.hero ? "H:" : "V:") + i.ficha.power);
+                temp.setIcon(new ImageIcon("icons/Null.png"));
                 temp.setText("[" + temp.x + "," + temp.y + "]");
                 selected = false;
                 heroesTurn = !heroesTurn;
+                setNullPiecesOpposite();
                 //GameP.setLabel(heroesTurn == MainPro.gameLogic.heroStart ? GameP.player1.getNombre() : GameP.player2.getNombre());
                 System.out.println("TURN PASSED");
             }
@@ -88,6 +97,51 @@ public class ButtonsP extends javax.swing.JPanel {
                 temp = i;
             System.out.println("RIP");
         }
+    }
+    
+    public void fight(BetterButtons attacker, BetterButtons defender){
+        //m.A.A.d City - KendrickLamar
+        if(defender.ficha == null){
+            defender.ficha = attacker.ficha;
+            defender.setIcon(defender.ficha.img);
+            defender.setText((defender.ficha.hero ? "H:" : "V:") + defender.ficha.power); //remove later
+        }
+        else if(defender.ficha.power == 11 || (attacker.ficha.power == defender.ficha.power)){
+            dedHeroes[dedH++] = heroesTurn ? attacker.ficha : defender.ficha;
+            dedVillains[dedV++] = heroesTurn ? defender.ficha : attacker.ficha;
+            defender.ficha = null;
+        }
+        else if(defender.ficha.power == 10 && attacker.ficha.power == 1){
+            if(heroesTurn){
+                dedVillains[dedV++] = defender.ficha;
+            }
+            else{
+                dedHeroes[dedH++] = defender.ficha;
+            }
+            defender.ficha = attacker.ficha;
+            defender.setIcon(defender.ficha.img);
+            defender.setText((defender.ficha.hero ? "H:" : "V:") + defender.ficha.power); //removeeee
+        }
+        else if((attacker.ficha.power > defender.ficha.power) || (defender.ficha.power == 11 && attacker.ficha.power == 3)){
+            if(heroesTurn){
+                dedVillains[dedV++] = defender.ficha;
+            }
+            else{
+                dedHeroes[dedH++] = defender.ficha;
+            }
+            defender.ficha = attacker.ficha;
+            defender.setIcon(defender.ficha.img);
+            defender.setText((defender.ficha.hero ? "H:" : "V:") + defender.ficha.power); //remmmmve
+        }
+        else if(attacker.ficha.power < defender.ficha.power){
+            if(!heroesTurn){
+                dedVillains[dedV++] = attacker.ficha;
+            }
+            else{
+                dedHeroes[dedH++] = attacker.ficha;
+            }
+        }
+        attacker.ficha = null;
     }
     
     public void setAvailableFalse(){
@@ -112,17 +166,17 @@ public class ButtonsP extends javax.swing.JPanel {
         int d = afiliacion ? 6 : 2;
         int e = afiliacion ? 6 : 0;
         x = ran.nextInt(8)+1;//enemies es 8+1
-        fichas[x][a] = new Flag(afiliacion);//enemies es 0
-        fichas[x+1][a] = new Bomb(afiliacion);//0
-        fichas[x-1][a] = new Bomb(afiliacion);//0
-        fichas[x][b] = new Bomb(afiliacion);//1
-        fichas[x+1][b] = new Bomb(afiliacion);//1
-        fichas[x-1][b] = new Bomb(afiliacion);//1
+        fichas[x][a] = new Flag(afiliacion, afiliacion ? "icons/FlagH.png" : "icons/FlagV.png");//enemies es 0
+        fichas[x+1][a] = new Bomb(afiliacion, afiliacion ? "icons/BombH.png" : "icons/BombV.png");//0
+        fichas[x-1][a] = new Bomb(afiliacion, afiliacion ? "icons/BombH.png" : "icons/BombV.png");//0
+        fichas[x][b] = new Bomb(afiliacion, afiliacion ? "icons/BombH.png" : "icons/BombV.png");//1
+        fichas[x+1][b] = new Bomb(afiliacion, afiliacion ? "icons/BombH.png" : "icons/BombV.png");//1
+        fichas[x-1][b] = new Bomb(afiliacion, afiliacion ? "icons/BombH.png" : "icons/BombV.png");//1
         while(true){
             x = ran.nextInt(10);//10
             y = ran.nextInt(2)+c;//2+0
             if(fichas[x][y] == null){
-                fichas[x][y] = new Bomb(afiliacion);
+                fichas[x][y] = new Bomb(afiliacion, afiliacion ? "icons/BombH.png" : "icons/BombV.png");
                 break;
             }
         }
@@ -131,7 +185,7 @@ public class ButtonsP extends javax.swing.JPanel {
                 x = ran.nextInt(10);//10
                 y = ran.nextInt(2)+d;//2+2
                 if(fichas[x][y] == null){
-                    fichas[x][y] = new Two(afiliacion);
+                    fichas[x][y] = new Two(afiliacion, (afiliacion ? "icons/TwoH" : "icons/TwoV") +  i + ".png");
                     break;
                 }
             }
@@ -140,7 +194,7 @@ public class ButtonsP extends javax.swing.JPanel {
             x = ran.nextInt(10);//10
             y = ran.nextInt(2)+c;//2+0
             if(fichas[x][y] == null){
-                fichas[x][y] = new One(afiliacion);
+                fichas[x][y] = new One(afiliacion, afiliacion ? "icons/OneH.png" : "icons/OneV.png");
                 break;
             }
         }
@@ -149,7 +203,7 @@ public class ButtonsP extends javax.swing.JPanel {
                 x = ran.nextInt(10);//10
                 y = ran.nextInt(4)+e;//4
                 if(fichas[x][y] == null){
-                    fichas[x][y] = new Three(afiliacion);
+                    fichas[x][y] = new Three(afiliacion, (afiliacion ? "icons/ThreeH" : "icons/ThreeV") +  i + ".png");
                     break;
                 }
             }
@@ -159,7 +213,7 @@ public class ButtonsP extends javax.swing.JPanel {
                 x = ran.nextInt(10);//10
                 y = ran.nextInt(4)+e;//4
                 if(fichas[x][y] == null){
-                    fichas[x][y] = new Four(afiliacion);
+                    fichas[x][y] = new Four(afiliacion, (afiliacion ? "icons/FourH" : "icons/FourV") +  i + ".png");
                     break;
                 }
             }
@@ -169,7 +223,7 @@ public class ButtonsP extends javax.swing.JPanel {
                 x = ran.nextInt(10);//10
                 y = ran.nextInt(4)+e;//4
                 if(fichas[x][y] == null){
-                    fichas[x][y] = new Five(afiliacion);
+                    fichas[x][y] = new Five(afiliacion, (afiliacion ? "icons/FiveH" : "icons/FiveV") +  i + ".png");
                     break;
                 }
             }
@@ -179,7 +233,7 @@ public class ButtonsP extends javax.swing.JPanel {
                 x = ran.nextInt(10);//10
                 y = ran.nextInt(4)+e;//4
                 if(fichas[x][y] == null){
-                    fichas[x][y] = new Six(afiliacion);
+                    fichas[x][y] = new Six(afiliacion, (afiliacion ? "icons/SixH" : "icons/SixV") +  i + ".png");
                     break;
                 }
             }
@@ -189,7 +243,7 @@ public class ButtonsP extends javax.swing.JPanel {
                 x = ran.nextInt(10);//10
                 y = ran.nextInt(4)+e;//4
                 if(fichas[x][y] == null){
-                    fichas[x][y] = new Seven(afiliacion);
+                    fichas[x][y] = new Seven(afiliacion, (afiliacion ? "icons/SevenH" : "icons/SevenV") +  i + ".png");
                     break;
                 }
             }
@@ -199,7 +253,7 @@ public class ButtonsP extends javax.swing.JPanel {
                 x = ran.nextInt(10);//10
                 y = ran.nextInt(4)+e;//4
                 if(fichas[x][y] == null){
-                    fichas[x][y] = new Eight(afiliacion);
+                    fichas[x][y] = new Eight(afiliacion, (afiliacion ? "icons/EightH" : "icons/EightV") +  i + ".png");
                     break;
                 }
             }
@@ -208,7 +262,7 @@ public class ButtonsP extends javax.swing.JPanel {
             x = ran.nextInt(10);//10
             y = ran.nextInt(4)+e;//4
             if(fichas[x][y] == null){
-                fichas[x][y] = new Nine(afiliacion);
+                fichas[x][y] = new Nine(afiliacion, afiliacion ? "icons/NineH.png" : "icons/NineV.png");
                 break;
             }
         }
@@ -216,9 +270,26 @@ public class ButtonsP extends javax.swing.JPanel {
             x = ran.nextInt(10);//10
             y = ran.nextInt(4)+e;//4
             if(fichas[x][y] == null){
-                fichas[x][y] = new Ten(afiliacion);
+                fichas[x][y] = new Ten(afiliacion, afiliacion ? "icons/TenH.png" : "icons/TenV.png");
                 break;
             }
+        }
+    }
+    
+    public void setNullPieces(){
+        nullFs[0] = fichas[2][4] = new NullF(!heroesTurn, "icons/Fire.png");
+        nullFs[1] = fichas[2][5] = new NullF(!heroesTurn, "icons/Fire.png");
+        nullFs[2] = fichas[3][4] = new NullF(!heroesTurn, "icons/Fire.png");
+        nullFs[3] = fichas[3][5] = new NullF(!heroesTurn, "icons/Fire.png");
+        nullFs[4] = fichas[6][4] = new NullF(!heroesTurn, "icons/Fire.png");
+        nullFs[5] = fichas[6][5] = new NullF(!heroesTurn, "icons/Fire.png");
+        nullFs[6] = fichas[7][4] = new NullF(!heroesTurn, "icons/Fire.png");
+        nullFs[7] = fichas[7][5] = new NullF(!heroesTurn, "icons/Fire.png");//ripp
+    }
+    
+    public void setNullPiecesOpposite(){
+        for(Ficha i : nullFs){
+            i.hero = !heroesTurn;
         }
     }
     
@@ -226,11 +297,17 @@ public class ButtonsP extends javax.swing.JPanel {
         for(int y = 0; y<10; y++){
             for(int x = 0; x<10; x++){
                 if(fichas[x][y] != null){
-                    ButtonsP.grid[x][y].ficha = fichas[x][y];
+                    grid[x][y].ficha = fichas[x][y];
+                    grid[x][y].setIcon(fichas[x][y].img);
+                    if(fichas[x][y] instanceof NullF)
+                        grid[x][y].setText("NULL");
+                    else
+                        grid[x][y].setText((fichas[x][y].hero ? "H:" : "V:") + fichas[x][y].power);
                     //System.out.print(((BetterButtons)ButtonsP.grid[y][x]).ficha.power + " - ");
                     //System.out.println(fichas[y][x] + " - ");
-                    ButtonsP.grid[x][y].setText((fichas[x][y].hero ? "H:" : "V:") + fichas[x][y].power);
                 }
+                else
+                    grid[x][y].setIcon(new ImageIcon("icons/Null.png"));
             }
             //System.out.println();
         }

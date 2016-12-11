@@ -12,8 +12,8 @@ import visual.BetterButtons;
  * @author Diegu7
  */
 public class Bomb extends Ficha{
-    public Bomb(boolean afiliacion) {
-        super(afiliacion);
+    public Bomb(boolean afiliacion, String dir) {
+        super(afiliacion, dir);
         power = 11;
     }
     

@@ -11,8 +11,8 @@ package objects;
  */
 public class Seven extends Ficha{
     
-    public Seven(boolean afiliacion) {
-        super(afiliacion);
+    public Seven(boolean afiliacion, String dir) {
+        super(afiliacion, dir);
         power = 7;
     }
     
