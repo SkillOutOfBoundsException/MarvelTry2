@@ -6,12 +6,15 @@ import objects.Usuario;
 
 public class MainMenuP extends javax.swing.JPanel {
 
-    private Usuario player1;
+    /**
+     *
+     */
+    public Usuario player1;
     
     public MainMenuP(Usuario player1) {
         initComponents();
         this.player1 = player1;
-        //lLoggedIn.setText(player1.getNombre());
+        lLoggedIn.setText(this.player1.getNombre());
     }
 
     @SuppressWarnings("unchecked")

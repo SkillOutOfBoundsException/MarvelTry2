@@ -8,6 +8,7 @@ package visual;
 import java.awt.GridLayout;
 import java.util.Random;
 import javax.swing.ImageIcon;
+import marveltry1.MainPro;
 import objects.Bomb;
 import objects.Eight;
 import objects.Ficha;
@@ -22,6 +23,7 @@ import objects.Six;
 import objects.Ten;
 import objects.Three;
 import objects.Two;
+import objects.Usuario;
 
 /**
  *
@@ -43,6 +45,12 @@ public class ButtonsP extends javax.swing.JPanel {
     public Ficha[] dedHeroes = new Ficha[20];
     public int dedV = 0;
     public int dedH = 0;
+    public static boolean tutorial = true;
+    public static boolean isPlayer1Hero;
+    public static Usuario player1;
+    public static Usuario player2;
+    public static Usuario currentPlayer;
+    public static Usuario notCurrent;
     
     public ButtonsP() {
         initComponents();
@@ -64,8 +72,7 @@ public class ButtonsP extends javax.swing.JPanel {
         randPlacement(false);
         setNullPieces();
         setPieces();
-        //GameP.setLabel(GameP.player1.getNombre());
-        
+        isPlayer1Hero = heroesTurn;
     }
  
     public void buttonPressed(BetterButtons i){
@@ -73,15 +80,15 @@ public class ButtonsP extends javax.swing.JPanel {
         if(selected){
             System.out.println("SELECTED");
             if(i.available){
-                fight(temp, i);
-                setAvailableFalse();
-                //i.setText((i.ficha.hero ? "H:" : "V:") + i.ficha.power);
-                temp.setIcon(new ImageIcon("icons/Null.png"));
-                temp.setText("[" + temp.x + "," + temp.y + "]");
+                if(!tutorial)
+                    hideButtons(false);
+                fightTut(temp, i);
                 selected = false;
-                heroesTurn = !heroesTurn;
+                changeTurn();                
+                if(!tutorial)
+                    hideButtons(true);
+                setAvailableFalse();
                 setNullPiecesOpposite();
-                //GameP.setLabel(heroesTurn == MainPro.gameLogic.heroStart ? GameP.player1.getNombre() : GameP.player2.getNombre());
                 System.out.println("TURN PASSED");
             }
             else{
@@ -99,64 +106,102 @@ public class ButtonsP extends javax.swing.JPanel {
         }
     }
     
-    public void fight(BetterButtons attacker, BetterButtons defender){
+    public void fightTut(BetterButtons attacker, BetterButtons defender){
         //m.A.A.d City - KendrickLamar
+        if(defender.ficha instanceof Flag){
+            //aqui termina el juego
+            MainPro.lol.showMessage("Enhorabuena!", currentPlayer.getNombre() + " ha ganado el juego capturando la bandera!", 1);  
+            MainPro.lol.setPanel(new MainMenuP(MainPro.game.player1));
+            return;
+        }            
         if(defender.ficha == null){
+            MainPro.lol.showMessage("Cambio de turno", "Turno de " + notCurrent.getNombre(), 1);
             defender.ficha = attacker.ficha;
             defender.setIcon(defender.ficha.img);
-            defender.setText((defender.ficha.hero ? "H:" : "V:") + defender.ficha.power); //remove later
+        }
+        else if((defender.ficha.power == 10 && attacker.ficha.power == 1) || (defender.ficha.power == 11 && attacker.ficha.power == 3)){
+            if(heroesTurn){
+                dedVillains[dedV++] = defender.ficha;
+                MainPro.game.addDedVillain(defender.ficha.rank);
+            }
+            else{
+                dedHeroes[dedH++] = defender.ficha;
+                MainPro.game.addDedHero(defender.ficha.rank);
+            }
+            MainPro.lol.showMessage("Cambio de turno", attacker.ficha.rank + " ha derrotado a " + defender.ficha.rank + ". Turno de " + notCurrent.getNombre(), 1);
+            defender.ficha = attacker.ficha;            
+            defender.setIcon(defender.ficha.img);
+            
         }
         else if(defender.ficha.power == 11 || (attacker.ficha.power == defender.ficha.power)){
             dedHeroes[dedH++] = heroesTurn ? attacker.ficha : defender.ficha;
+            MainPro.game.addDedHero(heroesTurn ? attacker.ficha.rank : defender.ficha.rank);
             dedVillains[dedV++] = heroesTurn ? defender.ficha : attacker.ficha;
+            MainPro.game.addDedVillain(heroesTurn ? defender.ficha.rank : attacker.ficha.rank);
+            MainPro.lol.showMessage("Cambio de turno", attacker.ficha.rank + " ha atacado a " + defender.ficha.rank + ". Ambos caen! Turno de " + notCurrent.getNombre(), 1);
             defender.ficha = null;
         }
-        else if(defender.ficha.power == 10 && attacker.ficha.power == 1){
+        else if(attacker.ficha.power > defender.ficha.power){
             if(heroesTurn){
                 dedVillains[dedV++] = defender.ficha;
+                MainPro.game.addDedVillain(defender.ficha.rank);
             }
             else{
                 dedHeroes[dedH++] = defender.ficha;
+                MainPro.game.addDedHero(defender.ficha.rank);
             }
+            MainPro.lol.showMessage("Cambio de turno", attacker.ficha.rank + " ha derrotado a " + defender.ficha.rank + ". Turno de " + notCurrent.getNombre(), 1);
             defender.ficha = attacker.ficha;
             defender.setIcon(defender.ficha.img);
-            defender.setText((defender.ficha.hero ? "H:" : "V:") + defender.ficha.power); //removeeee
-        }
-        else if((attacker.ficha.power > defender.ficha.power) || (defender.ficha.power == 11 && attacker.ficha.power == 3)){
-            if(heroesTurn){
-                dedVillains[dedV++] = defender.ficha;
-            }
-            else{
-                dedHeroes[dedH++] = defender.ficha;
-            }
-            defender.ficha = attacker.ficha;
-            defender.setIcon(defender.ficha.img);
-            defender.setText((defender.ficha.hero ? "H:" : "V:") + defender.ficha.power); //remmmmve
         }
         else if(attacker.ficha.power < defender.ficha.power){
             if(!heroesTurn){
                 dedVillains[dedV++] = attacker.ficha;
+                MainPro.game.addDedVillain(attacker.ficha.rank);
             }
             else{
                 dedHeroes[dedH++] = attacker.ficha;
+                MainPro.game.addDedHero(attacker.ficha.rank);
             }
+            MainPro.lol.showMessage("Cambio de turno", attacker.ficha.rank + " ha atacado a " + defender.ficha.rank + ". Ha caido en batalla! Turno de " + notCurrent.getNombre(), 1);
         }
         attacker.ficha = null;
+        attacker.setIcon(new ImageIcon("icons/Null.png"));
+    }
+    
+    public void changeTurn(){
+        heroesTurn = !heroesTurn;
+        currentPlayer = currentPlayer == player1 ? player2 : player1;
+        notCurrent = currentPlayer == player1 ? player2 : player1;
     }
     
     public void setAvailableFalse(){
         for(int y = 0; y<10; y++){
             for(int x = 0; x<10; x++){
                 grid[x][y].available = false;
-                if(grid[x][y].getText().equalsIgnoreCase("glow")){
-                    grid[x][y].setText("[" + x +","+ y + "]");
-                    if(grid[x][y].ficha != null)
-                        grid[x][y].setText((grid[x][y].ficha.hero ? "H:" : "V:") + grid[x][y].ficha.power);
+                grid[x][y].setIcon(new ImageIcon("icons/Null.png"));
+                if(grid[x][y].ficha != null){
+                    if(tutorial || grid[x][y].ficha instanceof NullF)
+                        grid[x][y].setIcon(grid[x][y].ficha.img);
+                    else{
+                        if(heroesTurn)
+                            grid[x][y].setIcon(grid[x][y].ficha.hero ? grid[x][y].ficha.img : new ImageIcon("icons/NullV.png"));
+                        else
+                            grid[x][y].setIcon(!grid[x][y].ficha.hero ? grid[x][y].ficha.img : new ImageIcon("icons/NullH.png"));
+                    }    
                 }
             }
         }
     }
         
+    public void hideButtons(boolean bool){
+        for(int y = 0; y<10; y++){
+            for(int x = 0; x<10; x++){
+                grid[x][y].setVisible(bool);
+            }
+        }
+    }
+    
     public void randPlacement(boolean afiliacion){
         int x;
         int y;
@@ -298,18 +343,20 @@ public class ButtonsP extends javax.swing.JPanel {
             for(int x = 0; x<10; x++){
                 if(fichas[x][y] != null){
                     grid[x][y].ficha = fichas[x][y];
-                    grid[x][y].setIcon(fichas[x][y].img);
                     if(fichas[x][y] instanceof NullF)
-                        grid[x][y].setText("NULL");
+                        grid[x][y].setIcon(fichas[x][y].img);
+                    else if(!tutorial){
+                        if(heroesTurn)
+                            grid[x][y].setIcon(grid[x][y].ficha.hero ? grid[x][y].ficha.img : new ImageIcon("icons/NullV.png"));
+                        else
+                            grid[x][y].setIcon(!grid[x][y].ficha.hero ? grid[x][y].ficha.img : new ImageIcon("icons/NullH.png"));
+                    }
                     else
-                        grid[x][y].setText((fichas[x][y].hero ? "H:" : "V:") + fichas[x][y].power);
-                    //System.out.print(((BetterButtons)ButtonsP.grid[y][x]).ficha.power + " - ");
-                    //System.out.println(fichas[y][x] + " - ");
+                        grid[x][y].setIcon(fichas[x][y].img);
                 }
                 else
                     grid[x][y].setIcon(new ImageIcon("icons/Null.png"));
             }
-            //System.out.println();
         }
     }
     

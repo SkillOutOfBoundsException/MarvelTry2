@@ -23,6 +23,7 @@ public class PlayerComboP extends javax.swing.JPanel {
     
     public PlayerComboP(Usuario player1) {
         initComponents();
+        this.player1 = player1;
         arrPlayers = new String[MainPro.funcs.arrUsu.size()-1];
         for(int i = 0; i < arrPlayers.length; i++) {
             if(MainPro.funcs.arrUsu.get(i) == player1)
@@ -120,11 +121,9 @@ public class PlayerComboP extends javax.swing.JPanel {
     private void bAceptarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAceptarMouseReleased
         ButtonsP.heroesTurn = rHeroStart.isSelected();
         Usuario usu = MainPro.funcs.searchUsu((String)cPlayers.getSelectedItem());
-        if(usu != null){
-            MainPro.lol.setPanel(MainPro.game  = new GameP(player1, usu));
-            return;
-        }
-        MainPro.lol.showMessage("Aviso","Por favor seleccione el player 2", 0);
+        MainPro.lol.setPanel(MainPro.game  = new GameP(player1, usu));
+           
+        
         
     }//GEN-LAST:event_bAceptarMouseReleased
 

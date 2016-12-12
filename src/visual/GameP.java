@@ -8,7 +8,6 @@ package visual;
 import javax.swing.table.DefaultTableModel;
 import marveltry1.MainPro;
 import objects.Usuario;
-
 /**
  *
  * @author Diegu7
@@ -25,7 +24,11 @@ public class GameP extends javax.swing.JPanel {
         initComponents();
         this.player1 = player1;
         this.player2 = player2;
-        lTurnoDe.setVisible(false);
+        ButtonsP.player1 = player1;
+        ButtonsP.player2 = player2;
+        ButtonsP.currentPlayer = player1;
+        ButtonsP.notCurrent = player2;
+        lTurnoDe.setText(player1.getNombre());
     }
 
     /**
@@ -158,12 +161,12 @@ public class GameP extends javax.swing.JPanel {
         lTurnoDe.setText(s);
     }
     
-    public void setVillainRow(String lol){
-        DefaultTableModel model = (DefaultTableModel) tHeroDed.getModel();
+    public void addDedVillain(String lol){
+        DefaultTableModel model = (DefaultTableModel) tVillainDed.getModel();
         model.addRow(new Object[]{lol});
     }
     
-    public void setHeroRow(String lol){
+    public void addDedHero(String lol){
         DefaultTableModel model = (DefaultTableModel) tHeroDed.getModel();
         model.addRow(new Object[]{lol});
     }

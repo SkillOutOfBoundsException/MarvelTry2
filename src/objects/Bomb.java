@@ -15,6 +15,7 @@ public class Bomb extends Ficha{
     public Bomb(boolean afiliacion, String dir) {
         super(afiliacion, dir);
         power = 11;
+        rank = "Bomba";
     }
     
     @Override

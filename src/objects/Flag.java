@@ -15,6 +15,7 @@ public class Flag extends Ficha{
     public Flag(boolean afiliacion, String dir) {
         super(afiliacion, dir);
         power = 0;
+        rank = "Flag";
     }
     
     @Override
