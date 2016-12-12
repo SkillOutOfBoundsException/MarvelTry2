@@ -41,12 +41,11 @@ public class ButtonsP extends javax.swing.JPanel {
     public static boolean heroesTurn = true;
     public Random ran = new Random();
     public Ficha[] nullFs = new Ficha[8];
-    public Ficha[] dedVillains = new Ficha[20];
-    public Ficha[] dedHeroes = new Ficha[20];
+    public Ficha[] dedVillains = new Ficha[40];
+    public Ficha[] dedHeroes = new Ficha[40];
     public int dedV = 0;
     public int dedH = 0;
     public static boolean tutorial = true;
-    public static boolean isPlayer1Hero;
     public static Usuario player1;
     public static Usuario player2;
     public static Usuario currentPlayer;
@@ -68,14 +67,15 @@ public class ButtonsP extends javax.swing.JPanel {
                     this.add(grid[x][y]);
             }
         }
+        //No Role Modelz - JCole
         randPlacement(true);
         randPlacement(false);
         setNullPieces();
         setPieces();
-        isPlayer1Hero = heroesTurn;
     }
  
     public void buttonPressed(BetterButtons i){
+        //Keep Talking - PinkFloyd
         System.out.println(i.x + "-" + i.y);
         if(selected){
             System.out.println("SELECTED");
@@ -106,7 +106,7 @@ public class ButtonsP extends javax.swing.JPanel {
         }
     }
     
-    public void fightTut(BetterButtons attacker, BetterButtons defender){
+    public void fightTut(BetterButtons attacker, BetterButtons defender){//descomentar los popups later
         //m.A.A.d City - KendrickLamar
         if(defender.ficha instanceof Flag){
             //aqui termina el juego
@@ -115,7 +115,7 @@ public class ButtonsP extends javax.swing.JPanel {
             return;
         }            
         if(defender.ficha == null){
-            MainPro.lol.showMessage("Cambio de turno", "Turno de " + notCurrent.getNombre(), 1);
+            //MainPro.lol.showMessage("Cambio de turno", "Turno de " + notCurrent.getNombre(), 1);
             defender.ficha = attacker.ficha;
             defender.setIcon(defender.ficha.img);
         }
@@ -128,7 +128,7 @@ public class ButtonsP extends javax.swing.JPanel {
                 dedHeroes[dedH++] = defender.ficha;
                 MainPro.game.addDedHero(defender.ficha.rank);
             }
-            MainPro.lol.showMessage("Cambio de turno", attacker.ficha.rank + " ha derrotado a " + defender.ficha.rank + ". Turno de " + notCurrent.getNombre(), 1);
+            //MainPro.lol.showMessage("Cambio de turno", attacker.ficha.rank + " ha derrotado a " + defender.ficha.rank + ". Turno de " + notCurrent.getNombre(), 1);
             defender.ficha = attacker.ficha;            
             defender.setIcon(defender.ficha.img);
             
@@ -138,7 +138,7 @@ public class ButtonsP extends javax.swing.JPanel {
             MainPro.game.addDedHero(heroesTurn ? attacker.ficha.rank : defender.ficha.rank);
             dedVillains[dedV++] = heroesTurn ? defender.ficha : attacker.ficha;
             MainPro.game.addDedVillain(heroesTurn ? defender.ficha.rank : attacker.ficha.rank);
-            MainPro.lol.showMessage("Cambio de turno", attacker.ficha.rank + " ha atacado a " + defender.ficha.rank + ". Ambos caen! Turno de " + notCurrent.getNombre(), 1);
+            //MainPro.lol.showMessage("Cambio de turno", attacker.ficha.rank + " ha atacado a " + defender.ficha.rank + ". Ambos caen! Turno de " + notCurrent.getNombre(), 1);
             defender.ficha = null;
         }
         else if(attacker.ficha.power > defender.ficha.power){
@@ -150,7 +150,7 @@ public class ButtonsP extends javax.swing.JPanel {
                 dedHeroes[dedH++] = defender.ficha;
                 MainPro.game.addDedHero(defender.ficha.rank);
             }
-            MainPro.lol.showMessage("Cambio de turno", attacker.ficha.rank + " ha derrotado a " + defender.ficha.rank + ". Turno de " + notCurrent.getNombre(), 1);
+            //MainPro.lol.showMessage("Cambio de turno", attacker.ficha.rank + " ha derrotado a " + defender.ficha.rank + ". Turno de " + notCurrent.getNombre(), 1);
             defender.ficha = attacker.ficha;
             defender.setIcon(defender.ficha.img);
         }
@@ -163,7 +163,7 @@ public class ButtonsP extends javax.swing.JPanel {
                 dedHeroes[dedH++] = attacker.ficha;
                 MainPro.game.addDedHero(attacker.ficha.rank);
             }
-            MainPro.lol.showMessage("Cambio de turno", attacker.ficha.rank + " ha atacado a " + defender.ficha.rank + ". Ha caido en batalla! Turno de " + notCurrent.getNombre(), 1);
+            //MainPro.lol.showMessage("Cambio de turno", attacker.ficha.rank + " ha atacado a " + defender.ficha.rank + ". Ha caido en batalla! Turno de " + notCurrent.getNombre(), 1);
         }
         attacker.ficha = null;
         attacker.setIcon(new ImageIcon("icons/Null.png"));
@@ -173,6 +173,12 @@ public class ButtonsP extends javax.swing.JPanel {
         heroesTurn = !heroesTurn;
         currentPlayer = currentPlayer == player1 ? player2 : player1;
         notCurrent = currentPlayer == player1 ? player2 : player1;
+        MainPro.game.setLabel(currentPlayer.getNombre() + (heroesTurn ? " - HEROES" : " - VILLANOS"));
+    }
+    
+    public boolean isAlive(){
+        
+        return false;
     }
     
     public void setAvailableFalse(){
@@ -218,7 +224,7 @@ public class ButtonsP extends javax.swing.JPanel {
         fichas[x+1][b] = new Bomb(afiliacion, afiliacion ? "icons/BombH.png" : "icons/BombV.png");//1
         fichas[x-1][b] = new Bomb(afiliacion, afiliacion ? "icons/BombH.png" : "icons/BombV.png");//1
         while(true){
-            x = ran.nextInt(10);//10
+            x = ran.nextInt(8) + 1;//10
             y = ran.nextInt(2)+c;//2+0
             if(fichas[x][y] == null){
                 fichas[x][y] = new Bomb(afiliacion, afiliacion ? "icons/BombH.png" : "icons/BombV.png");

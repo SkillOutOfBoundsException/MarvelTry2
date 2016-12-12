@@ -9,9 +9,9 @@ public class Logic {
     
     public Logic(){
         arrUsu = new ArrayList<>();
-        arrUsu.add(new Usuario("username", "password"));
-        arrUsu.add(new Usuario("dego", "12345"));
-        arrUsu.add(new Usuario("ivan", "12354"));
+        arrUsu.add(new Usuario("Username", "password"));
+        arrUsu.add(new Usuario("Dego", "12345"));
+        arrUsu.add(new Usuario("Ivan", "12354"));
     }
     
     public boolean crearUsu(String usu, String pass){

@@ -28,7 +28,7 @@ public class GameP extends javax.swing.JPanel {
         ButtonsP.player2 = player2;
         ButtonsP.currentPlayer = player1;
         ButtonsP.notCurrent = player2;
-        lTurnoDe.setText(player1.getNombre());
+        lTurnoDe.setText(player1.getNombre() + (ButtonsP.heroesTurn ? " - HEROES" : " - VILLANOS"));
     }
 
     /**
@@ -157,7 +157,7 @@ public class GameP extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public static void setLabel(String s){
+    public void setLabel(String s){
         lTurnoDe.setText(s);
     }
     
