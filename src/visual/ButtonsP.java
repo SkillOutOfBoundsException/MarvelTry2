@@ -115,7 +115,7 @@ public class ButtonsP extends javax.swing.JPanel {
             return;
         }            
         if(defender.ficha == null){
-            //MainPro.lol.showMessage("Cambio de turno", "Turno de " + notCurrent.getNombre(), 1);
+            MainPro.lol.showMessage("Cambio de turno", "Turno de " + notCurrent.getNombre(), 1);
             defender.ficha = attacker.ficha;
             defender.setIcon(defender.ficha.img);
         }
@@ -128,7 +128,7 @@ public class ButtonsP extends javax.swing.JPanel {
                 dedHeroes[dedH++] = defender.ficha;
                 MainPro.game.addDedHero(defender.ficha.rank);
             }
-            //MainPro.lol.showMessage("Cambio de turno", attacker.ficha.rank + " ha derrotado a " + defender.ficha.rank + ". Turno de " + notCurrent.getNombre(), 1);
+            MainPro.lol.showMessage("Cambio de turno", attacker.ficha.rank + " ha derrotado a " + defender.ficha.rank + ". Turno de " + notCurrent.getNombre(), 1);
             defender.ficha = attacker.ficha;            
             defender.setIcon(defender.ficha.img);
             
@@ -138,7 +138,7 @@ public class ButtonsP extends javax.swing.JPanel {
             MainPro.game.addDedHero(heroesTurn ? attacker.ficha.rank : defender.ficha.rank);
             dedVillains[dedV++] = heroesTurn ? defender.ficha : attacker.ficha;
             MainPro.game.addDedVillain(heroesTurn ? defender.ficha.rank : attacker.ficha.rank);
-            //MainPro.lol.showMessage("Cambio de turno", attacker.ficha.rank + " ha atacado a " + defender.ficha.rank + ". Ambos caen! Turno de " + notCurrent.getNombre(), 1);
+            MainPro.lol.showMessage("Cambio de turno", attacker.ficha.rank + " ha atacado a " + defender.ficha.rank + ". Ambos caen! Turno de " + notCurrent.getNombre(), 1);
             defender.ficha = null;
         }
         else if(attacker.ficha.power > defender.ficha.power){
@@ -150,7 +150,7 @@ public class ButtonsP extends javax.swing.JPanel {
                 dedHeroes[dedH++] = defender.ficha;
                 MainPro.game.addDedHero(defender.ficha.rank);
             }
-            //MainPro.lol.showMessage("Cambio de turno", attacker.ficha.rank + " ha derrotado a " + defender.ficha.rank + ". Turno de " + notCurrent.getNombre(), 1);
+            MainPro.lol.showMessage("Cambio de turno", attacker.ficha.rank + " ha derrotado a " + defender.ficha.rank + ". Turno de " + notCurrent.getNombre(), 1);
             defender.ficha = attacker.ficha;
             defender.setIcon(defender.ficha.img);
         }
@@ -163,7 +163,7 @@ public class ButtonsP extends javax.swing.JPanel {
                 dedHeroes[dedH++] = attacker.ficha;
                 MainPro.game.addDedHero(attacker.ficha.rank);
             }
-            //MainPro.lol.showMessage("Cambio de turno", attacker.ficha.rank + " ha atacado a " + defender.ficha.rank + ". Ha caido en batalla! Turno de " + notCurrent.getNombre(), 1);
+            MainPro.lol.showMessage("Cambio de turno", attacker.ficha.rank + " ha atacado a " + defender.ficha.rank + ". Ha caido en batalla! Turno de " + notCurrent.getNombre(), 1);
         }
         attacker.ficha = null;
         attacker.setIcon(new ImageIcon("icons/Null.png"));
