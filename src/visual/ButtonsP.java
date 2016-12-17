@@ -128,12 +128,15 @@ public class ButtonsP extends javax.swing.JPanel {
                 dedHeroes[dedH++] = defender.ficha;
                 MainPro.game.addDedHero(defender.ficha.rank);
             }
+            defender.ficha.alive = false;
             MainPro.lol.showMessage("Cambio de turno", attacker.ficha.rank + " ha derrotado a " + defender.ficha.rank + ". Turno de " + notCurrent.getNombre(), 1);
             defender.ficha = attacker.ficha;            
             defender.setIcon(defender.ficha.img);
             
         }
         else if(defender.ficha.power == 11 || (attacker.ficha.power == defender.ficha.power)){
+            defender.ficha.alive = false;
+            attacker.ficha.alive = false;
             dedHeroes[dedH++] = heroesTurn ? attacker.ficha : defender.ficha;
             MainPro.game.addDedHero(heroesTurn ? attacker.ficha.rank : defender.ficha.rank);
             dedVillains[dedV++] = heroesTurn ? defender.ficha : attacker.ficha;
@@ -150,6 +153,7 @@ public class ButtonsP extends javax.swing.JPanel {
                 dedHeroes[dedH++] = defender.ficha;
                 MainPro.game.addDedHero(defender.ficha.rank);
             }
+            defender.ficha.alive = false;
             MainPro.lol.showMessage("Cambio de turno", attacker.ficha.rank + " ha derrotado a " + defender.ficha.rank + ". Turno de " + notCurrent.getNombre(), 1);
             defender.ficha = attacker.ficha;
             defender.setIcon(defender.ficha.img);
@@ -163,10 +167,15 @@ public class ButtonsP extends javax.swing.JPanel {
                 dedHeroes[dedH++] = attacker.ficha;
                 MainPro.game.addDedHero(attacker.ficha.rank);
             }
+            attacker.ficha.alive = false;
             MainPro.lol.showMessage("Cambio de turno", attacker.ficha.rank + " ha atacado a " + defender.ficha.rank + ". Ha caido en batalla! Turno de " + notCurrent.getNombre(), 1);
         }
         attacker.ficha = null;
         attacker.setIcon(new ImageIcon("icons/Null.png"));
+        if(wonByMovable()){
+            MainPro.lol.showMessage("Enhorabuena!", currentPlayer.getNombre() + " ha ganado el juego capturando las fichas movibles del oponente!", 1);
+            MainPro.lol.setPanel(new MainMenuP(MainPro.game.player1));
+        }
     }
     
     public void changeTurn(){
@@ -176,9 +185,16 @@ public class ButtonsP extends javax.swing.JPanel {
         MainPro.game.setLabel(currentPlayer.getNombre() + (heroesTurn ? " - HEROES" : " - VILLANOS"));
     }
     
-    public boolean isAlive(){
-        
-        return false;
+    public boolean wonByMovable(){
+        for(int y = 0; y<10; y++){
+            for(int x = 0; x<10; x++){
+                if(fichas[x][y] != null && fichas[x][y].hero != heroesTurn && !(fichas[x][y] instanceof NullF) && !(fichas[x][y] instanceof Flag) && !(fichas[x][y] instanceof Bomb) ){
+                    if(fichas[x][y].alive)
+                        return false;                    
+                }
+            }
+        }
+        return true;
     }
     
     public void setAvailableFalse(){
