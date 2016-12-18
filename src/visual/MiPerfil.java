@@ -1,10 +1,12 @@
 
 package visual;
 
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import marveltry1.MainPro;
 import objects.Usuario;
+import twitter4j.Twitter;
+import objects.GuardarEnDisco;
+import twitter4j.TwitterFactory;
 
 public class MiPerfil extends javax.swing.JPanel {
     
@@ -135,7 +137,10 @@ public class MiPerfil extends javax.swing.JPanel {
     }//GEN-LAST:event_eliminarMouseReleased
 
     private void jButton4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseReleased
-        // TODO add your handling code here:
+        Twitter twitter;
+        String userTweet = JOptionPane.showInputDialog("Escriba su usuario de twitter: ");
+        String passTweet = JOptionPane.showInputDialog("Escriba su contrase de twitter");
+        //twitter = new TwitterFactory().getInstance(userTweet, passTweet);
     }//GEN-LAST:event_jButton4MouseReleased
 
 

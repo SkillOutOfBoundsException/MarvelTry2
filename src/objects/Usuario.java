@@ -1,19 +1,23 @@
 
 package objects;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import marveltry1.MainPro;
+import objects.Logic;
 
 public class Usuario implements Serializable{
     
     private String nombre;
     private String password;
     private int puntos;
-    static int evilPlays = 0;
-    static int heroPlays = 0;
-    public static int activos = 0;
+    int evilPlays = 0;
+    int heroPlays = 0;
+    public static int activos=2;
     private ArrayList<String> logs;
+    File file;
     
     
     public Usuario(String nombre, String password){
@@ -22,6 +26,8 @@ public class Usuario implements Serializable{
         this.puntos = 0;
         logs = new ArrayList<>();
         activos += 1;
+        file = new File ("Jugadores/" + nombre);
+        file.mkdir();
     }
     
     public String getNombre(){

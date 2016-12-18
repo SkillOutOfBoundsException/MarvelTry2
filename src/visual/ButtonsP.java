@@ -52,7 +52,7 @@ public class ButtonsP extends javax.swing.JPanel {
     public static Usuario player2;
     public static Usuario currentPlayer;
     public static Usuario notCurrent;
-    public Logic logic;
+    GuardarEnDisco daftPunk = new GuardarEnDisco();
     
     public ButtonsP() {
         initComponents();
@@ -116,6 +116,7 @@ public class ButtonsP extends javax.swing.JPanel {
             MainPro.lol.showMessage("Enhorabuena!", currentPlayer.getNombre() + " ha ganado el juego capturando la bandera!", 1);
             String ficha = (heroesTurn) ? "Heroes" : "Villanos";
             currentPlayer.iWin(1 , currentPlayer.getNombre(), notCurrent.getNombre(), ficha, heroesTurn, ButtonsP.notCurrent);
+            daftPunk.save();
             MainPro.lol.setPanel(new MainMenuP(MainPro.game.player1));
             return;
         }            
@@ -181,6 +182,7 @@ public class ButtonsP extends javax.swing.JPanel {
             MainPro.lol.showMessage("Enhorabuena!", currentPlayer.getNombre() + " ha ganado el juego capturando las fichas movibles del oponente!", 1);
             String ficha = (heroesTurn) ? "Heroes" : "Villanos";
             currentPlayer.iWin(2, currentPlayer.getNombre(), notCurrent.getNombre(), ficha, heroesTurn, ButtonsP.notCurrent);
+            daftPunk.save();
             MainPro.lol.setPanel(new MainMenuP(MainPro.game.player1));
         }
     }

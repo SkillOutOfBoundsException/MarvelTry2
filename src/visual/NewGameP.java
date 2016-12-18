@@ -1,22 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package visual;
 
 import marveltry1.MainPro;
 import objects.Usuario;
 
-/**
- *
- * @author Diegu7
- */
 public class NewGameP extends javax.swing.JPanel {
 
-    /**
-     * Creates new form NewGameP
-     */
     private Usuario player1;
     
     public NewGameP(Usuario player1) {

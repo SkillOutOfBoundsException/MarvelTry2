@@ -1,24 +1,18 @@
 
 package objects;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 import marveltry1.MainPro;
 
-public class GuardarEnDisco {
+public final class GuardarEnDisco {
     
     MainPro mp;
     
-    ArrayList<Usuario> al;
-    
     public void save() {
         try {
-            File carpeta = new File ("Jugadores");
-            carpeta.mkdir();
-            FileOutputStream fo = new FileOutputStream("Jugadores/jugadores.jug");
+            FileOutputStream fo = new FileOutputStream("stratego_players.mav");
             ObjectOutputStream oo = new ObjectOutputStream(fo);
             oo.writeObject(mp.funcs.arrUsu);
         } catch (IOException e) {

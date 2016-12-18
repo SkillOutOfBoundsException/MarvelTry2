@@ -34,7 +34,7 @@ public class LoginP extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1280, 720));
 
         fUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fUsuario.setText("username");
+        fUsuario.setText("Dego");
         fUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 fUsuarioMouseClicked(evt);
@@ -50,7 +50,7 @@ public class LoginP extends javax.swing.JPanel {
         });
 
         fPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fPassword.setText("password");
+        fPassword.setText("12345");
         fPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 fPasswordMouseReleased(evt);
@@ -135,7 +135,7 @@ public class LoginP extends javax.swing.JPanel {
         }
         if(MainPro.funcs.crearUsu(takeUsuario(), takePassword())){
             MainPro.lol.showMessage("Aviso","Usuario creado exitosamente", 1);
-            MainPro.lol.setPanel(new SplashP());
+            MainPro.lol.setPanel(new MainMenuP(MainPro.funcs.searchUsu(usu)));
             return;
         }
         MainPro.lol.showMessage("Aviso","Usuario ya esta tomado o contrasena no es de 5 caracteres", 0);        
@@ -159,7 +159,7 @@ public class LoginP extends javax.swing.JPanel {
             }
             if(MainPro.funcs.crearUsu(takeUsuario(), takePassword())){
                 MainPro.lol.showMessage("Aviso","Usuario creado exitosamente", 1);
-                MainPro.lol.setPanel(new SplashP());
+                MainPro.lol.setPanel(new MainMenuP(MainPro.funcs.searchUsu(usu)));
                 return;
             }
             MainPro.lol.showMessage("Aviso","Usuario ya esta tomado o contrasena no es de 5 caracteres", 0);

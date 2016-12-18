@@ -1,26 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package visual;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import marveltry1.MainPro;
 import objects.Usuario;
-import objects.Logic;
-/**
- *
- * @author Diegu7
- */
+import objects.GuardarEnDisco;
+
 public class GameP extends javax.swing.JPanel {
 
-    /**
-     * Creates new form GameP
-     */
     public static Usuario player1;
     public static Usuario player2;
-    Logic logic;
+    GuardarEnDisco gd = new GuardarEnDisco();
     
     public GameP(Usuario player1, Usuario player2) {
         initComponents();
@@ -174,9 +165,13 @@ public class GameP extends javax.swing.JPanel {
     }
     
     private void bRendirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bRendirMouseReleased
-        String ficha = (ButtonsP.heroesTurn) ? "Heroes" : "Villanos";
-        ButtonsP.currentPlayer.iWin(3, ButtonsP.currentPlayer.getNombre(), ButtonsP.notCurrent.getNombre(), ficha, ButtonsP.heroesTurn, ButtonsP.notCurrent);
-        MainPro.lol.setPanel(new MainMenuP(player1));
+        int batman = JOptionPane.showConfirmDialog(null, "Seguro que quiere rendirse ?");
+        if (batman == 0 ) {
+            String ficha = (ButtonsP.heroesTurn) ? "Heroes" : "Villanos";
+            ButtonsP.currentPlayer.iWin(3, ButtonsP.currentPlayer.getNombre(), ButtonsP.notCurrent.getNombre(), ficha, ButtonsP.heroesTurn, ButtonsP.notCurrent);
+            gd.save();
+            MainPro.lol.setPanel(new MainMenuP(player1));
+        }
     }//GEN-LAST:event_bRendirMouseReleased
 
 

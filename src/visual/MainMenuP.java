@@ -3,18 +3,17 @@ package visual;
 
 import marveltry1.MainPro;
 import objects.Usuario;
+import objects.GuardarEnDisco;
 
 public class MainMenuP extends javax.swing.JPanel {
 
-    /**
-     *
-     */
     public Usuario player1;
     
     public MainMenuP(Usuario player1) {
         initComponents();
         this.player1 = player1;
         lLoggedIn.setText(this.player1.getNombre());
+        new GuardarEnDisco().save();
     }
 
     @SuppressWarnings("unchecked")
