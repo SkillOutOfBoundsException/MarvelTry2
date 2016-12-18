@@ -24,6 +24,8 @@ import objects.Ten;
 import objects.Three;
 import objects.Two;
 import objects.Usuario;
+import objects.Logic;
+import objects.GuardarEnDisco;
 
 /**
  *
@@ -50,6 +52,7 @@ public class ButtonsP extends javax.swing.JPanel {
     public static Usuario player2;
     public static Usuario currentPlayer;
     public static Usuario notCurrent;
+    public Logic logic;
     
     public ButtonsP() {
         initComponents();
@@ -110,7 +113,9 @@ public class ButtonsP extends javax.swing.JPanel {
         //m.A.A.d City - KendrickLamar
         if(defender.ficha instanceof Flag){
             //aqui termina el juego
-            MainPro.lol.showMessage("Enhorabuena!", currentPlayer.getNombre() + " ha ganado el juego capturando la bandera!", 1);  
+            MainPro.lol.showMessage("Enhorabuena!", currentPlayer.getNombre() + " ha ganado el juego capturando la bandera!", 1);
+            String ficha = (heroesTurn) ? "Heroes" : "Villanos";
+            currentPlayer.iWin(1 , currentPlayer.getNombre(), notCurrent.getNombre(), ficha, heroesTurn, ButtonsP.notCurrent);
             MainPro.lol.setPanel(new MainMenuP(MainPro.game.player1));
             return;
         }            
@@ -174,6 +179,8 @@ public class ButtonsP extends javax.swing.JPanel {
         attacker.setIcon(new ImageIcon("icons/Null.png"));
         if(wonByMovable()){
             MainPro.lol.showMessage("Enhorabuena!", currentPlayer.getNombre() + " ha ganado el juego capturando las fichas movibles del oponente!", 1);
+            String ficha = (heroesTurn) ? "Heroes" : "Villanos";
+            currentPlayer.iWin(2, currentPlayer.getNombre(), notCurrent.getNombre(), ficha, heroesTurn, ButtonsP.notCurrent);
             MainPro.lol.setPanel(new MainMenuP(MainPro.game.player1));
         }
     }

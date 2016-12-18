@@ -24,7 +24,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="540" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="bStrategoMarvel" pref="200" max="32767" attributes="0"/>
+                  <Component id="bStrategoMarvel" min="-2" pref="200" max="-2" attributes="0"/>
                   <Component id="bConfiguracion" max="32767" attributes="0"/>
                   <Component id="bMiPerfil" max="32767" attributes="0"/>
                   <Component id="bUniverso" max="32767" attributes="0"/>
@@ -78,6 +78,7 @@
       </Properties>
       <Events>
         <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bMiPerfilMouseReleased"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bMiPerfilActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bUniverso">

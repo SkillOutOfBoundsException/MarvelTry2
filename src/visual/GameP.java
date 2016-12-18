@@ -8,6 +8,7 @@ package visual;
 import javax.swing.table.DefaultTableModel;
 import marveltry1.MainPro;
 import objects.Usuario;
+import objects.Logic;
 /**
  *
  * @author Diegu7
@@ -19,6 +20,7 @@ public class GameP extends javax.swing.JPanel {
      */
     public static Usuario player1;
     public static Usuario player2;
+    Logic logic;
     
     public GameP(Usuario player1, Usuario player2) {
         initComponents();
@@ -172,6 +174,8 @@ public class GameP extends javax.swing.JPanel {
     }
     
     private void bRendirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bRendirMouseReleased
+        String ficha = (ButtonsP.heroesTurn) ? "Heroes" : "Villanos";
+        ButtonsP.currentPlayer.iWin(3, ButtonsP.currentPlayer.getNombre(), ButtonsP.notCurrent.getNombre(), ficha, ButtonsP.heroesTurn, ButtonsP.notCurrent);
         MainPro.lol.setPanel(new MainMenuP(player1));
     }//GEN-LAST:event_bRendirMouseReleased
 

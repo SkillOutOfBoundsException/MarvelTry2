@@ -50,6 +50,11 @@ public class MainMenuP extends javax.swing.JPanel {
                 bMiPerfilMouseReleased(evt);
             }
         });
+        bMiPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bMiPerfilActionPerformed(evt);
+            }
+        });
 
         bUniverso.setText("Universo Marvel");
         bUniverso.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -75,7 +80,7 @@ public class MainMenuP extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(540, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(bStrategoMarvel, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(bStrategoMarvel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bConfiguracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bMiPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bUniverso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -115,12 +120,16 @@ public class MainMenuP extends javax.swing.JPanel {
     }//GEN-LAST:event_bConfiguracionMouseReleased
 
     private void bUniversoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bUniversoMouseReleased
-        MainPro.lol.showMessage("Aviso","PROXIMAMENTE", 1);
+        MainPro.lol.setPanel(new UniversoPanel(player1));
     }//GEN-LAST:event_bUniversoMouseReleased
 
     private void bMiPerfilMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMiPerfilMouseReleased
-        MainPro.lol.showMessage("Aviso","PROXIMAMENTE", 1);
+        MainPro.lol.setPanel(new MiPerfil(player1));
     }//GEN-LAST:event_bMiPerfilMouseReleased
+
+    private void bMiPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMiPerfilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bMiPerfilActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
